@@ -21,10 +21,10 @@
 */
 global $autoload_conf;
 $autoload_conf['libraries'] = array ();
-$autoload_conf['paths'] = array ('core/libs/', 'core/models/', 'core/controllers/', 'core/' ,'core/libs/templatex/','core/libs/orm/');
+$autoload_conf['paths'] = array ('core/libs/', 'core/models/', 'core/controllers/', 'controllers/','core/' ,'core/libs/templatex/','core/libs/orm/');
 $autoload_conf['ext-paths'] = array ('core/libs/smarty' );
 $autoload_conf['config'] = array ();
 $autoload_conf['language'] = array ();
 $autoload_conf['model'] = array ();
-//print_r($autoload_conf['paths']);
+
 ?>

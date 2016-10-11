@@ -32,7 +32,7 @@ class SimpleLogger {
 			return;
 		}
 		
-		$log_file_path = SIMPLE_LOG_ROOT . 'artk_php.log';
+		$log_file_path = SIMPLE_LOG_ROOT . 'Ark_php.log';
 		$log_level_name = SimpleLogger::$LOG_LEVEL_NAMES [$this->level];
 		$content = date ( 'Y/m/d H:i:s' ) . '  [' . $log_level_name . '] [ ' . $name . ' ] ' . $message . "\n";
 		//echo $content;
@@ -42,7 +42,7 @@ class SimpleLogger {
 		$switch = false;
 		date_default_timezone_set ( 'Asia/Shanghai' );
 		if ($switch) {
-			$log_file_path = SIMPLE_LOG_ROOT . 'artk_php.log';
+			$log_file_path = SIMPLE_LOG_ROOT . 'Ark_php.log';
 			$content = date ( 'Y/m/d H:i:s' ) . '  [ debug ] [ ' . $name . ' ] ' . $message . "\n";
 			file_put_contents ( $log_file_path, $content, FILE_APPEND );
 		}
@@ -60,7 +60,7 @@ class SimpleLogger {
 		$switch = false;
 		date_default_timezone_set ( 'Asia/Shanghai' );
 		if ($switch) {
-			$log_file_path = SIMPLE_LOG_ROOT . 'artk_php.log';
+			$log_file_path = SIMPLE_LOG_ROOT . 'Ark_php.log';
 			$content = date ( 'Y/m/d H:i:s' ) . '  [ debug ] [ ' . $name . ' ] ' . $message . "\n";
 			file_put_contents ( $log_file_path, $content, FILE_APPEND );
 		}

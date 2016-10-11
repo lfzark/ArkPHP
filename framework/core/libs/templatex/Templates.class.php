@@ -7,15 +7,13 @@ class Templatex {
 
 	private $_config = array ();
 
-
 	public function __construct() {
 		if(! is_dir ( TPL_C_DIR )){
 			mkdir(TPL_C_DIR);
 		}
 		if (! is_dir ( TPL_DIR )  ) {
-			exit ( 'ERROR：Template Dir is Not Exist .' );
+			exit ( 'ERROR：Template Dir is Not Exist.' );
 		}
-	
 		$this->loadSysVar();
 	}
 	
@@ -24,6 +22,7 @@ class Templatex {
 		
 		$this->_config [trim ( "ACTION_URL")]  = ACTION_URL;
 		
+		//apt-get install php7.0-xml TO-DEL
 		$_slf = simplexml_load_file ( FRAMEWORK_PATH . 'config/sys_var.xml' );
 		
 		$_tagLib = $_slf->xpath ( '/root/sys_tag' );
@@ -35,9 +34,9 @@ class Templatex {
 		
 	}
 	//assign()方法，用于注入变量
-	public function assign($_var, $_value) {
+	function assign($_var, $_value) {
 		if (isset ( $_var ) && ! empty ( $_var )) {
-			//$this->_vars['name']
+
 			$this->_vars [$_var] = $_value;
 				
 		} else {

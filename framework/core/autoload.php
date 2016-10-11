@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ArtkPHP [Fast And Simple]
+ * ArkPHP [Fast And Simple]
  * ==============================================
  * Copyright (c) 2014-2020 http://www.cnmpi.com All rights reserved.
  * -------------------------------------------------------------------
@@ -18,7 +18,7 @@ require_once 'auto_conf.php';
  * Auto load the .php class files in directories
  * @param string $className
  */
-function artk_autoload($className) {
+function Ark_autoload($className) {
 	global $autoload_conf;
 	$temp_path = '';
 	foreach ( $autoload_conf ['paths'] as $path ) {
@@ -36,7 +36,7 @@ function artk_autoload($className) {
  * @author: Ark <lfzlfz@126.com>
  * @return:void
  */
-function artk_autoload_list($class_path_list) {
+function Ark_autoload_list($class_path_list) {
 	foreach ( $class_path_list as $path ) {
 		if (require_it ( $path, $path )) {
 			continue;
@@ -50,6 +50,7 @@ function gen_path($sub_path, $className) {
 	
 	return FRAMEWORK_PATH . $sub_path . $className . EXT;
 }
+
 function require_it($className, $file_path) {
 	
 	if (file_exists ( $file_path )) {

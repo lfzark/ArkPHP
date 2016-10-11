@@ -6,6 +6,7 @@ function dir_path($path) {
 	$path = $path . '/';
 	return $path;
 }
+
 /**
  * 列出目录下的所有文件
  *

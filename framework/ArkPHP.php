@@ -34,7 +34,7 @@ define ( 'EXT', '.php' );
 define ( 'CLASS_EXT', '.class.php' );
 define ( 'INC_EXT', '.inc.php' );
 
-define ( 'BASE_PATH', dirname ( __FILE__ ) );
+define ( 'BASE_PATH', dirname ( __FILE__ ).DS.'..' );
 
 
 if(!defined("INDEX_PAGE")){
@@ -49,7 +49,7 @@ $framework_path = str_replace ( '\\', DS, BASE_PATH ) . DS . 'framework/';
 if (is_dir ( $framework_path )) {
 	define ( 'FRAMEWORK_PATH', $framework_path );
 } else {
-	exit ( 'Your fromework folder path does not appear to be set correctly' );
+	exit ( 'Your framework folder path does not appear to be set correctly' );
 }
 
 

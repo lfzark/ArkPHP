@@ -26,11 +26,37 @@ class Controller {
 		SimpleLogger::debug ( "Controller class is initialized" );
 	
 	}
-	
+
 	function load($model_url){
 		
 		$this->$model_url = '';
 		
+	}
+	
+	function param_safe_filter($param){
+		return $param;
+	}
+	
+	/**
+	 * 
+	 */
+	
+	function post($param){
+		//TODO Security Filter
+		if (array_key_exists($param,$_POST)){
+			return $this->param_safe_filter($_POST[$param]);
+		}
+		return null;
+	
+	}
+
+	function get($param){
+	  //TODO Security Filter
+		if (array_key_exists($param,$_GET)){
+			return $this->param_safe_filter($_GET[$param]);
+		}
+		return null;
+	
 	}
 	
 	function assign($var, $value){

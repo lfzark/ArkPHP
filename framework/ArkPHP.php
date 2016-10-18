@@ -37,11 +37,17 @@ define ( 'INC_EXT', '.inc.php' );
 define ( 'BASE_PATH', dirname ( __FILE__ ).DS.'..' );
 
 
-if(!defined("INDEX_PAGE")){
 
-	define ( 'INDEX_PAGE', 'index.php' );
+
+if(!defined("INDEX_PAGE")){
+  //定义入口文件　2016.10.18
+	$url =trim( $_SERVER['PHP_SELF'],'/');
+	$ex_url = explode('/',$url);
+	$filename = end($ex_url);
+	define ( 'INDEX_PAGE', $filename );
 
 }
+
 //echo BASE_PATH;
 // Path to the framework folder
 $framework_path = str_replace ( '\\', DS, BASE_PATH ) . DS . 'framework/';

@@ -58,9 +58,7 @@
 					
 					$this->location = $Ark_url [0] == '' ? array():explode ( '/', $Ark_url [0] );
 			
-					if (count ( $this->location ) == 2 ||count ( $this->location )  == 0 ) {
-					}
-					else {
+					if (!count ( $this->location ) == 2 && count ( $this->location )  != 0 ) {
 						exit ( "wrong location format,tell me your action (and params)" );
 					}
 					

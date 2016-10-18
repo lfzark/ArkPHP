@@ -41,11 +41,7 @@ define ( 'BASE_PATH', dirname ( __FILE__ ).DS.'..' );
 
 if(!defined("INDEX_PAGE")){
   //定义入口文件　2016.10.18
-	$url =trim( $_SERVER['PHP_SELF'],'/');
-	$ex_url = explode('/',$url);
-	$filename = end($ex_url);
-	define ( 'INDEX_PAGE', $filename );
-
+	define ( 'INDEX_PAGE', basename($_SERVER['SCRIPT_NAME']));
 }
 
 //echo BASE_PATH;

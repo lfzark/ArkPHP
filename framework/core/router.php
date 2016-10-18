@@ -19,10 +19,11 @@
 		private $url_param;
 		private $location;
 		function __construct() {
-			$QUERY_STRING = str_replace ( SITE_NAME, '', $_SERVER ['REQUEST_URI'] );
-			$QUERY_STRING = str_replace ( INDEX_PAGE, '', $QUERY_STRING );
-			
+
+			$QUERY_STRING = str_replace ( DS.SITE_NAME.DS.INDEX_PAGE, '', $_SERVER ['REQUEST_URI'] );
+	
 			$this->QUERY_STRING = trim ( $QUERY_STRING, '/' );
+
 			$this->params = array ();
 			$this->url_param ['pramers'] = array ();
 			$this->url_param ['method'] = '';
@@ -32,8 +33,9 @@
 			if (strlen ( $this->QUERY_STRING ) != 0) {
 				
 				$Ark_url = explode ( '?', $this->QUERY_STRING );
-				
+
 				if (count ( $Ark_url ) != 0) {
+					
 					if (count ( $Ark_url ) == 2) {
 						// Both Location And Parameters Then Parse Parameters
 						foreach ( explode ( '&', $Ark_url [1] ) as $param ) {
@@ -44,6 +46,7 @@
 							// echo $kv [0] . '---' . $kv [1] . '|';
 							$this->params = array_merge ( $this->params, $ary_kv_hash );
 						}
+					
 					} else if (count ( $Ark_url ) == 1) {
 						// Only Location Then Parameters = Post Values
 						
@@ -53,14 +56,17 @@
 						echo "wrong parammeters format";
 					}
 					
-					$this->location = explode ( '/', $Ark_url [0] );
-					if (count ( $this->location ) == 2) {
-					} else {
-						
-						exit ( "wrong location format" );
+					$this->location = $Ark_url [0] == '' ? array():explode ( '/', $Ark_url [0] );
+			
+					if (count ( $this->location ) == 2 ||count ( $this->location )  == 0 ) {
 					}
+					else {
+						exit ( "wrong location format,tell me your action (and params)" );
+					}
+					
 				}
 			}
+			
 			foreach ( $this->params as $key => $value ) {
 				$ary_kv_hash = array (
 						strtolower ( $key ) => $value 
@@ -69,7 +75,7 @@
 			}
 			
 			// print_r ( $this->url_param ['pramers'] );
-			
+	
 			$this->location_param_count = count ( $this->location );
 			
 			if ($this->location_param_count == 1 and $this->location [0] != '') {

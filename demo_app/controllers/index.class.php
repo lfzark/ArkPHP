@@ -28,15 +28,17 @@ class Index extends Controller {
 		echo '<br><hr>';
 		//echo 'plugins/*: ->'.$this->send_post('http://127.0.0.1:667/api/plugins/PortScanPlugin', 	 Array(json_encode(Array())));
 		echo 'register_agent: ->';
-		print_r ($this->http_post_data('http://127.0.0.1:667/api/register_agent',json_encode(array('agent_name'=>'agent_name','agent_ip'=>'172.16.204.118','agent_port'=>'666','agent_position'=>'0'	))));
-		print_r ($this->http_post_data('http://127.0.0.1:667/api/register_agent',json_encode(array('agent_name'=>'agent_name','agent_ip'=>'192.168.1.1','agent_port'=>'666','agent_position'=>'1'	))));
+		print_r ($this->http_post_data('http://127.0.0.1:667/api/register_agent',json_encode(array('agent_name'=>'agent_name','agent_ip'=>'172.16.204.72','agent_port'=>'666','agent_position'=>'0'	))));
+		print_r ($this->http_post_data('http://127.0.0.1:667/api/register_agent',json_encode(array('agent_name'=>'agent_name','agent_ip'=>'172.16.204.12','agent_port'=>'666','agent_position'=>'1'	))));
+		//print_r ($this->http_post_data('http://127.0.0.1:667/api/register_agent',json_encode(array('agent_name'=>'agent_name','agent_ip'=>'192.168.1.1','agent_port'=>'666','agent_position'=>'1'	))));
 		echo '<br><hr>';
 		echo 'unregister_agent: ->';
+		print_r ($this->http_post_data('http://127.0.0.1:667/api/unregister_agent',json_encode(array('agent_id'=>'ebfd8cb946bde33b8fe992240a0d25ec'))));
 		print_r ($this->http_post_data('http://127.0.0.1:667/api/unregister_agent',json_encode(array('agent_id'=>'d59de2c86d7cf1370ed950396d5f26d1'))));
 		echo '<br><hr>';
 		echo 'cron_plugins: ->';
 		print_r ($this->http_post_data('http://127.0.0.1:667/api/cron_plugins/@minutely',
-				json_encode(array('agent_id'=>'913036a8a56fe52ef68841770b52231d',
+				json_encode(array('agent_id'=>'8cd1d975a41433053a14734ccd563a2c',
 														 'plugin_name'=>'PortScanPlugin',
 						  							 'param'=>array('ip_list'=>'127.0.0.1','bad_iplist'=>''),
 														 'task_id'=>'aaaa_taskid'
@@ -51,9 +53,9 @@ class Index extends Controller {
 		echo '<br><hr>';
 		echo 'run_plugin: ->';
 		print_r ($this->http_post_data('http://127.0.0.1:667/api/run_plugins',
-				json_encode(array('agent_id'=>'a0ca7ad9df5a1f64a5c0d35751171dd9',
+				json_encode(array('agent_id'=>'8cd1d975a41433053a14734ccd563a2c',
 						'plugin_name'=>'PortScanPlugin',
-						'param'=>array('ip_list'=>'172.16.204.118','bad_iplist'=>''),
+						'param'=>array('ip_list'=>'172.16.204.1','bad_iplist'=>''),
 						'task_id'=>'aaaa_taskid'
 		
 				))));

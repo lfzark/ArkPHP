@@ -53,7 +53,12 @@ class Index extends Controller {
 		$this->display ( 'step2.tpl' );
 	
 	}
+	function step3() {
 	
+
+		$this->display ( 'step3.tpl' );
+	
+	}
 	function step_already_finished(){
 		$this->display ( 'already_installed.tpl' );
 	}

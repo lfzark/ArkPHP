@@ -9,7 +9,7 @@ body {background: #f0f0f0;}
 .copyright { line-height:25px; padding-top:10px; text-align:center; color:#999;font-family: 微软雅黑; }
 .copyright a { color:#2e3436 }
 .red{font-weight: 700;color: red;font-size: 18px;}
-.install {padding: 0 25px;margin-top: 10px; line-height:35px; }
+.install {float:left; width:670px; padding:50px 0 0 0;}
 .message{text-align:center}
 .install .formitm { padding: 8px 0px; height:30px; line-height: 30px; }
 .install .lab { float: left; width: 260px; text-align: right; }
@@ -19,3 +19,15 @@ background: #117ed2;
 background-image: linear-gradient(to bottom,#2488d4 0,#1c5bad 100%); }
 
 .button:hover {background: #2488d4; background-image: linear-gradient(to bottom,#37aaea 0,#117ed2 100%);}
+
+.main{ width:900px; margin:5% auto 0 auto; border:1px solid #ccc; padding-bottom:30px;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;color: #666;background: #eeeeec;}
+.main .sidebar{float:left; width:230px; overflow:hidden;}
+.main .sidebar .step{}
+.main .sidebar .step ul{clear:both; overflow:hidden;}
+.main .sidebar .step ul li{float:left; height:30px; line-height:30px;}
+.main .sidebar .step ul .statusdot{width:30px;}
+.main .sidebar .step ul .name{color:#333;}
+.main .sidebar .step .done .statusdot{background:url(mark-ok.png) 10px 6px no-repeat;}
+.main .sidebar .step .done .name{color:#093;}
+.main .sidebar .step .current .statusdot{background:url(statusdot.png) 12px 11px no-repeat;}
+.main .sidebar .step .current .name{font-weight:bold; color:#000;}

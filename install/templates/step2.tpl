@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8"/>
-<title>ArkCMS 企业建站版安装向导</title>
- <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<!--{PUBLIC_PATH}-->/css/arkcms.css"/>
-</head>
+
+{include file="header.tpl"}
 <body>
 <div class="install-box">
   <div class="head"> ArkCMS  安装向导 </div>

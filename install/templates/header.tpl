@@ -1,9 +1,5 @@
-<style type="text/css">
-.form-signin-heading {
-      color: #997;
-      font-size: 18px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      position: relative;
-}
-</style>
+<head>
+<meta charset="utf-8"/>
+<title>ArkCMS 企业建站版安装向导</title>
+<link rel="stylesheet" type="text/css" href="<!--{PUBLIC_PATH}-->/css/arkcms.css"/>
+</head>

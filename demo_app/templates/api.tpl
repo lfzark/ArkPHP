@@ -10,7 +10,7 @@
     <!-- 以上三个meta标签必须放在头部 -->
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>API 测试平台</title>
 
     <!-- Bootstrap -->
     <link href="<!--{PUBLIC_PATH}-->/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,9 @@
     </head>
     <body>
     <h1>分布式漏扫架构API测试</h1>
+    <hr>
     <h3>通用API测试</h3>
+    <hr>
     <form class='form-inline' >
     <button type="button" class="btn btn-default btn-lrg ajax" title="Ajax Request">
             <i class="fa fa-spin fa-refresh"></i>&nbsp; get_results
@@ -73,7 +75,7 @@
         <input class="form-control" id="unregister_agent_agent_id" placeholder="agent ID" type="text">
 
       </div>
-      </form>
+     
 <hr>
     <div class="form-group" display:inline-block>
     
@@ -82,30 +84,28 @@
     </button>
     
       </div>
+
+      <hr>
       
-      </form>
-<hr>
-  <h3>插件API测试</h3>
-    <form class='form-inline' >
- 
-    <div class="form-group" display:inline-block>
-    <button type="button" class="btn btn-default btn-lrg unregister_agent" title="Ajax Request">
-            <i class="	fa fa-spin fa-refresh"></i>&nbsp; unregister_agent
-    </button>
-
-        <input class="form-control" id="unregister_agent_agent_id" placeholder="agent ID" type="text">
-
-      </div>
-      </form>
-<hr>
     <div class="form-group" display:inline-block>
     
-    <button type="button" class="btn btn-default btn-lrg update_agent_status" title="Ajax Request">
-            <i class="	fa fa-spin fa-refresh"></i>&nbsp; update_agent_status
+    <button type="button" class="btn btn-default btn-lrg plugin_running_status" title="Ajax Request">
+            <i class="	fa fa-spin fa-refresh"></i>&nbsp; plugin_running_status
     </button>
+    <input class="form-control" id="plugin_running_status_agent_id" placeholder="agent ID" type="text">
+   </div>
+    <hr>
     
+          <div class="form-group" display:inline-block>
+    <button type="button" class="btn btn-default btn-lrg is_alive" title="Ajax Request">
+            <i class="	fa fa-spin fa-refresh"></i>&nbsp; is_alive
+    </button>
+
+        <input class="form-control" id="is_alive_agent_id" placeholder="agent ID" type="text">
+
       </div>
-      
+     
+<hr>
       </form>
     <div class="ajax-content">
     </div>
@@ -150,8 +150,17 @@
         }});
      });
      
-  
+     $('.plugin_running_status').click(function(){
+        $.ajax({url: '<!--{ACTION_URL}-->/index/plugin_running_status?agent_id='+$('#plugin_running_status_agent_id').val(), success: function(result){
+            $('.ajax-content').html('<h4>返回结果</h4><hr>'+getTime()+'<hr>'+result);
+        }});
+     });
      
+     $('.is_alive').click(function(){
+        $.ajax({url: '<!--{ACTION_URL}-->/index/is_alive?agent_id='+$('#is_alive_agent_id').val(), success: function(result){
+            $('.ajax-content').html('<h4>返回结果</h4><hr>'+getTime()+'<hr>'+result);
+        }});
+     });
      
 </script>
   </body>

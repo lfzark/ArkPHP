@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8"/>
-<title>ArkCMS 企业建站版安装向导</title>
-<link rel="stylesheet" type="text/css" href="<!--{PUBLIC_PATH}-->/css/arkcms.css"/>
-</head>
-<body>
-<div class="install-box">
-<div class="head">ArkCMS 许可协议</div>
+
+{include file="header.tpl"}
+<div class="main">
+{include file="siderbar.tpl"}
+<div class="head">ArkCMS 许可协议</div>	
 <div class="install">
 <p>1、感谢您选择ArkCMS 。非授权用户，前后台必须保留 ArkCMS 版权信息。</p>
 <p>2、我们不承诺对免费用户提供任何形式的技术支持、使用担保。</p>
@@ -24,6 +21,8 @@
   </div>
 </div>
 </div>
-<div class="copyright">Copyright &copy; 2016 <a target="_blank" href="http://www.arkphp.com">www.arkphp.com</a> All Rights Reserved. </div>
+</div>
+{include file="footer.tpl"}
+
 </body>
 </html>

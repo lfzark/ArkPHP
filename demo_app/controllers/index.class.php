@@ -14,6 +14,7 @@ class Index extends Controller {
 		
 		$this->assign('tips','I am Tips');		
 		$this->display ( 'api.tpl' );
+		
 // 		echo $this->get('test');
 // 		echo $this->get('nnnnnnnnnnn');
 // 		echo 'get_results: ->';
@@ -36,6 +37,7 @@ class Index extends Controller {
 // 		print_r ($this->http_post_data('http://127.0.0.1:667/api/unregister_agent',json_encode(array('agent_id'=>'ebfd8cb946bde33b8fe992240a0d25ec'))));
 // 		print_r ($this->http_post_data('http://127.0.0.1:667/api/unregister_agent',json_encode(array('agent_id'=>'d59de2c86d7cf1370ed950396d5f26d1'))));
 // 		echo '<br><hr>';
+
 // 		echo 'cron_plugins: ->';
 // 		print_r ($this->http_post_data('http://127.0.0.1:667/api/cron_plugins/@minutely',
 // 				json_encode(array('agent_id'=>'8cd1d975a41433053a14734ccd563a2c',
@@ -87,6 +89,22 @@ class Index extends Controller {
 		print_r($this->http_post_data('http://127.0.0.1:667/api/update_agent_status', 	 json_encode('')));
 		
 	}
+	function plugin_running_status($agent_id){
+		
+		print_r($this->http_post_data('http://127.0.0.1:667/api/plugin_running_status', json_encode(array('agent_id'=>$agent_id))));
+	
+	}
+	function is_alive_($agent_id){
+		
+		print_r($this->http_post_data_ssl('https://127.0.0.1:666/api/isalive', json_encode(array('agent_id'=>$agent_id))));
+	}
+	
+	
+	function is_alive($agent_id){
+	
+		print_r($this->http_post_data('http://127.0.0.1:667/api/isalive', json_encode(array('agent_id'=>$agent_id))));
+	}
+	
 	function http_post_data($url, $data_string) {
 		//apt-get install php-curl
 
@@ -109,7 +127,29 @@ class Index extends Controller {
 		return array($return_code, $return_content);
 	}
 	
-
+	function http_post_data_ssl($url, $data_string) {
+		//apt-get install php-curl
+	
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+	
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json; charset=utf-8',
+				'Content-Length: ' . strlen($data_string))
+				);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//这个是重点。
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+		ob_start();
+		curl_exec($ch);
+		$return_content = ob_get_contents();
+		ob_end_clean();
+	
+		$return_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		return array($return_code, $return_content);
+	}
+	
 
 
 }

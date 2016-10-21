@@ -20,10 +20,8 @@
 		private $location;
 		function __construct() {
 
-			$QUERY_STRING = str_replace ( DS.SITE_NAME.DS.INDEX_PAGE, '', $_SERVER ['REQUEST_URI'] );
-
+			$QUERY_STRING = str_replace ( array(DS.SITE_NAME,DS.INDEX_PAGE), '', $_SERVER ['REQUEST_URI'] );
 			$this->QUERY_STRING = trim ( $QUERY_STRING, '/' );
-
 			$this->params = array ();
 			$this->url_param ['parameters'] = array ();
 			$this->url_param ['method'] = '';
@@ -79,7 +77,11 @@
 	
 			if ($this->location_param_count == 1 and $this->location [0] != '') {
 				$this->url_param ['controller'] = $this->location [0];
+				$this->url_param ['method'] = Router::$routing_default ['method'];
 			} else if ($this->location_param_count > 1) {
+				$this->url_param ['controller'] = $this->location [0];
+				$this->url_param ['method'] = $this->location [1];
+			}  else if ($this->location_param_count > 1) {
 				$this->url_param ['controller'] = $this->location [0];
 				$this->url_param ['method'] = $this->location [1];
 			} else {

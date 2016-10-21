@@ -66,7 +66,7 @@ class Index extends Controller {
 	
 	function get_results(){
 		
-		print_r($this->http_post_data('http://127.0.0.1:667/api/get_results', json_encode('')));
+	print_r($this->http_post_data('http://127.0.0.1:667/api/get_results', json_encode('')));
 	
 	}
 	

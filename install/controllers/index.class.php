@@ -1,6 +1,22 @@
 <?php
 
+class StepClass{
+	public $step1='done';
+	public $step2='done';
+	public $step3='done';
+	public $step4='done';
+	public $step5='done';
+	
+	function __construct($a,$b,$c,$d,$e) {
+		$this->step1=$a;
+		$this->step2=$b;
+		$this->step3=$c;
+		$this->step4=$d;
+		$this->step5=$e;
+	}
 
+
+}
 
 class Index extends Controller {
 
@@ -12,8 +28,9 @@ class Index extends Controller {
 	 */
 
 	function run() {
-		
-		$this->assign('tips','I am Tips');		
+		$step_class = new StepClass('current','todo','todo','todo','todo');
+		$this->assign('step_class',$step_class);
+ 	
 		$this->display ( 'step1.tpl' );
 		
 	}
@@ -44,12 +61,14 @@ class Index extends Controller {
 		{
 			exit('MySqli is required!');
 		}
-		
 	}
+
 
 	function step2() {
 		
 		echo $this->check_installed();
+		$step_class = new StepClass('done','current','todo','todo','todo');
+		$this->assign('step_class',$step_class);
 		$this->display ( 'step2.tpl' );
 	
 	}

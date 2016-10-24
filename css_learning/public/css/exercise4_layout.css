@@ -27,7 +27,7 @@
 	/* Firefox 16+, Opera 12.50+ */
 }
 #menu {
-  background-color: whiteSmoke;
+  background-color: #babdb6;
   filter:alpha(opacity=50);  
   -moz-opacity:0.5;  
   -khtml-opacity: 0.5;  
@@ -117,6 +117,14 @@ p {text-indent:10px;}
   opacity: 0.5;  
   text-align: center;
 }
-
+.three-column {
+  padding: 1em;
+  -moz-column-count: 3;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 1em;
+  column-count: 3;
+  column-gap: 1em;
+}
 
  

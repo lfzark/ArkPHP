@@ -3,72 +3,93 @@
 
 {include file="header.tpl"}
 <body>
-<div class="install-box">
-  <div class="head"> ArkCMS  安装向导 </div>
-  <div class="install">
-    <form  action="index.php?c=install&a=step3" method="post"  id="form_step2">
+<!DOCTYPE html>
+<html>
 
-      <div class="formitm">
-        <label class="lab" >数据库名称：</label>
-        <input name="data[dbname]" type="text" value="" class="u-ipt" />
-      </div>
-      <div class="formitm">
-        <label class="lab" >管理员帐号：</label>
-        <input name="data[admin_name]" type="text" value="" class="u-ipt" />
-      </div>
-      <div class="formitm">
-        <label class="lab" >管理员密码：</label>
-        <input name="data[admin_pass]" type="password" value="" class="u-ipt" />
-      </div>
-      
-      <div class="formitm">
-        <label class="lab" >安装测试数据：</label>
-        <label class="u-opt">
-          <input name="data[import]" type="checkbox" value="1" checked align="bottom"/>
-        </label>
-      </div>
-      
-      <div id="tip" style="display: none;">
-        <div class="formitm"  style="text-align: center;">安 装 中，请 稍 候 . . .</div>
-      </div>
-      
-      <div class="install-button"><a id="submit" href="javascript:;" class="button">下一步</a></div>
+{include file="header.tpl"}
+<div class="main">
+<div class="title"> ArkCMS  安装向导 </div>
+{include file="siderbar.tpl"}
+<div class="head">环境以及文件目录权限</div>	
+<div class="install">
 
-      <div class="install-error">测试</div>
+<strong> 1、服务器环境检测</strong>
+					<table width="90%" cellpadding="0" cellspacing="1" bgcolor="#DDDDDD" border="0">
+						<tr>
+							<th bgcolor="#EEEEEE" height="28">检测项目</th>
+							<th bgcolor="#EEEEEE">最低要求</th>
+							<th bgcolor="#EEEEEE">推荐配置</th>
+							<th bgcolor="#EEEEEE">当前服务器</th>
+							<th bgcolor="#EEEEEE">结果</th>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF" align="center" height="28">操作系统</td>
+							<td bgcolor="#FFFFFF" align="center">不限制</td>
+							<td bgcolor="#FFFFFF" align="center">类Unix</td>
+							<td bgcolor="#FFFFFF" align="center"><?php echo PHP_OS;?></td>
+							<td bgcolor="#FFFFFF" align="center">√</td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF" align="center" height="28">PHP版本</td>
+							<td bgcolor="#FFFFFF" align="center">5.3 +</td>
+							<td bgcolor="#FFFFFF" align="center">5.3 +</td>
+							<td bgcolor="#FFFFFF" align="center"><?php echo PHP_VERSION;?></td>
+							<td bgcolor="#FFFFFF" align="center"><?php echo PHP_VERSION>=5.3?'√':'×';?></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF" align="center" height="28">附件上传</td>
+							<td bgcolor="#FFFFFF" align="center">不限制</td>
+							<td bgcolor="#FFFFFF" align="center">2M</td>
+							<td bgcolor="#FFFFFF" align="center"><?php echo @ini_get('upload_max_filesize'); ?></td>
+							<td bgcolor="#FFFFFF" align="center">√</td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF" align="center" height="28">GD 库</td>
+							<td bgcolor="#FFFFFF" align="center">2.0.1 +</td>
+							<td bgcolor="#FFFFFF" align="center">2.1.0</td>
+							<td bgcolor="#FFFFFF" align="center"><?php echo $gd_version ? $gd_version : '不支持';?></td>
+							<td bgcolor="#FFFFFF" align="center"><?php echo round($gd_version)>=2?'√':'×';?></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF" align="center" height="28">函数依赖性检测</td>
+							<td bgcolor="#FFFFFF" colspan="4">
 
-    </form>
-  </div>
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF" align="center" height="28">&nbsp;服务器禁用的函数&nbsp;</td>
+							<td bgcolor="#FFFFFF" colspan="4" style="word-break:break-all; width:480px; padding:0 5px;"><?php $disFuns = ini_get('disable_functions'); echo empty($disFuns) ? '无' : $disFuns; ?></td>
+						</tr>
+					</table>
+					<br />
+					<strong>2、目录、文件权限检测</strong>
+					<table width="100%" cellpadding="0" cellspacing="1" bgcolor="#DDDDDD" border="0">
+						<tr>
+							<th bgcolor="#EEEEEE" height="28">文件或目录</th>
+							<th bgcolor="#EEEEEE">所需状态</th>
+							<th bgcolor="#EEEEEE">当前状态</th>
+						</tr>
+						<?php
+//							foreach($folder_items as $folder)
+//							{
+	//							if(!check_iswriteable($folder))
+		//						{
+			//						$cantsubmit='1';
+				//				}
+						?>
+						<tr>
+							<td bgcolor="#FFFFFF" height="28">&nbsp;&nbsp;&nbsp;<?php echo $folder?$folder:'/';?></td>
+							<td bgcolor="#FFFFFF" align="center"><img src="template/images/ok.png" /> 可写</td>
+							<td bgcolor="#FFFFFF" align="center"><?php //echo check_iswriteable($folder)?'<img src="template/images/ok.png" /> 可写':'<img src="template/images/not.png" /> 不可写';?></td>
+						</tr>
+						<?php// }?>
+					</table>
+
 </div>
-<div class="copyright">Copyright &copy; 2016 <a target="_blank" href="http://www.arkphp.com">www.arkphp.com</a> All Rights Reserved. </div>
 
-<script>
-$(function (){
 
-  $("input[name$='data[dbname]']").focus();
-  
-	$('#submit').click(function (){
-	  
-		if(!$("input[name='data[dbname]']").val())
-		{
-			alert('请输入数据库名称');
-			return $("input[name='data[dbname]']").focus();
-		}
-		if(!$("input[name='data[admin_name]']").val())
-		{
-			alert('请输入管理员账号');
-			return $("input[name='data[admin_name]']").focus();
-		}
-		if(!$("input[name='data[admin_pass]']").val())
-		{
-			alert('请输入管理员密码');
-			return $("input[name='data[admin_pass]']").focus();
-		}
-			
-     document.getElementById("tip").style.display = '';
-     document.getElementById("form_step2").submit();
-	});
-});
-</script>
 
+{include file="footer.tpl"}
 </body>
 </html>
+

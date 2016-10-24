@@ -109,7 +109,14 @@ class Parser {
 			}
 		}
 	}
-
+	
+	function getParIncludeList(){
+		
+		$_patten = '/\{include\s+file=\"([\w\.\-]+)\"\}/';
+		preg_match_all ( $_patten, $this->_tpl, $_file );
+		return $_file;
+	}
+	
 	//解析include语句 直接载入模板
 	/**
 	 * 解析<include file='*.tpl'>标签
@@ -121,16 +128,17 @@ class Parser {
 	private function parInclude() {
 		$_patten = '/\{include\s+file=\"([\w\.\-]+)\"\}/';
 		while ( preg_match ( $_patten, $this->_tpl, $_file ) ) {
-			//echo TPL_DIR.DS.$_file[1];
-				
+			
 
 			if (! file_exists ( TPL_DIR . DS . $_file [1] ) || empty ( $_file )) {
 				exit ( 'ERROR：Include Tag Parse Wrong！' );
 			}
+			
 			//app/templates/$1
 			/*
 			 "<?php include '$1';?>"
 			 */
+
 			$this->_tpl = preg_replace ( $_patten, file_get_contents ( TPL_DIR . DS . $_file [1] ), $this->_tpl ,$limit=1);
 		}
 
@@ -173,7 +181,7 @@ class Parser {
 	public function compile($_parFile) {
 		$logger = SimpleLogger::getInstance ();
 		//解析模板内容
-		$this->parInclude ();
+		$this->parInclude ();//需要嵌套
 
 		//$logger->debug($this->getTpl(),'parInclude');
 

@@ -149,9 +149,9 @@ class Plugin_api extends Controller {
 	function batch_execute_poc_cron_plugins($agent_id,$cron){
 	
 		//$agent_id=null;
-		echo $agent_id,$cron;
+		echo $agent_id,urldecode($cron);
 		//$agent_id= '913036a8a56fe52ef68841770b52231d';
-		$report_hash = 'hash_id_batch_execute_poc_scan';
+		$report_hash = 'hash_id_batch_execute_poc_scan1';
 		$param=array(
 				'operate'=>'batch_execute_poc',
 				'target'=>array('http://172.16.204.12:668','http://172.16.204.12:668'
@@ -160,7 +160,7 @@ class Plugin_api extends Controller {
 				)
 		);
 		$nodetype = 1;
-		$this->assign_task($report_hash,$agent_id,"PocScanPlugin",1,$param,	$cron,$nodetype);
+		$this->assign_task($report_hash,$agent_id,"PocScanPlugin",1,$param,	urldecode($cron),$nodetype);
 	
 	}
 	
@@ -199,9 +199,9 @@ class Plugin_api extends Controller {
 			case '3': $cron_task = '@minutely'; break ;
 			default:$cron_task = $cycle; break ;
 		}
-		$url  = "http://".$IP.':'.$PORT.'/api/'.$ACTION."/".$cron_task;
+		$url  = "http://".$IP.':'.$PORT.'/api/'.$ACTION."/";//.$cron_task;
 
-		$data = json_encode(array('task_id'=>$task_id, 'agent_id'=>$agent_id,'plugin_name'=>$plugin_name,'type'=>$type,'param'=>$param,'position'=>$position));
+		$data = json_encode(array('task_id'=>$task_id, 'agent_id'=>$agent_id,'plugin_name'=>$plugin_name,'type'=>$type,'param'=>$param,'position'=>$position,'cron'=>$cron_task));
 
 		list($return_code, $return_content) = $this->http_post_data($url, $data);
 		return $return_code;

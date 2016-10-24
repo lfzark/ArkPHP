@@ -1,0 +1,45 @@
+* { margin:0; padding:0; }
+A:link{text-decoration:none;}
+A:visited{text-decoration:none;}
+A:active{text-decoration:none;}
+
+body
+{
+	background-color:#cccccc
+	
+}
+h1
+{
+	color:#888a85;
+	text-align:center;
+	margin:10px 10px 10px 10px;
+}
+p
+{
+	border-style:dashed;
+	border-width:1px;
+	margin-left:50px;
+	margin-top:50px;
+	font-family:"微软雅黑";
+	font-size: 20px
+}
+/*
+a {
+	color:#2e3436;
+	font-size: 18px;
+	
+}
+*/
+a:link {color:#2e3436;} /* 未访问的链接 */
+a:visited {color:#000000;} /* 已访问的链接 */
+a:hover {color:#888a85;} /* 鼠标划过链接 */
+a:active {color:#2e3436;} /* 已选中的链接 */ 
+
+hr{
+	color:#babdb6;
+	margin-top:15px;
+	
+}
+.menu{
+	margin-left:50px;
+}

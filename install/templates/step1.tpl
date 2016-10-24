@@ -3,6 +3,7 @@
 
 {include file="header.tpl"}
 <div class="main">
+<div class="title"> ArkCMS  安装向导 </div>
 {include file="siderbar.tpl"}
 <div class="head">ArkCMS 许可协议</div>	
 <div class="install">
@@ -16,9 +17,9 @@
 <p>8、如果您未能遵守本协议的条款，您的授权将被终止，所被许可权利将被收回，并承担相应法律责任。</p>
 
 <p class='copyright'>版权所有 (c) 2016 www.arkphp.com</p>
-  <div class="install">
+  
   <div class="install-button"><a id="submit" href="<!--{ACTION_URL}-->/index/step2" class="button">我已阅读并同意此协议</a></div>
-  </div>
+
 </div>
 </div>
 </div>

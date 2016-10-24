@@ -54,14 +54,14 @@ class Templatex {
 	 * @return void
 	 */
 	public function display($_file) {
-		 
+		
 		$_tplFile = TPL_DIR . $_file;
 
 		 
 		if (! file_exists ( $_tplFile )) {
 			exit ( 'ERROR :TPL Files Not Found.' );
 		}
-		 
+
 		$_parFile = TPL_C_DIR . md5 ( $_file ) . $_file . '.php';
 
 		 
@@ -80,10 +80,22 @@ class Templatex {
 			}
 		}
 		
-		if (! file_exists ( $_parFile ) || filemtime ( $_parFile ) < filemtime ( $_tplFile )) {
+		require dirname ( __FILE__ ) . '/Parser.class.php';
+		$_parser = new Parser ( $_tplFile ); //模板文件
+		$include_recompile_flag = False;
+		
+		foreach ($_parser->getParIncludeList()[1] as $include_file){
+
+			if (! file_exists ( $include_file ) || filemtime ( $include_file ) < filemtime ( $_tplFile )) {
+				$include_recompile_flag =True;
+			}
+		}
+		
+		if (! file_exists ( $_parFile ) || filemtime ( $_parFile ) < filemtime ( $_tplFile )||$include_recompile_flag) {
+
+// 			require dirname ( __FILE__ ) . '/Parser.class.php';
+// 			$_parser = new Parser ( $_tplFile ); //模板文件
 			
-			require dirname ( __FILE__ ) . '/Parser.class.php';
-			$_parser = new Parser ( $_tplFile ); //模板文件
 			$_parser->compile ( $_parFile ); //编译文件
 			
 		}

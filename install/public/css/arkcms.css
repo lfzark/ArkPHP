@@ -1,15 +1,24 @@
 * { margin:0; padding:0; }
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body, input { font:14px/1.5 arial, "微软雅黑"; color:#666; outline:0; }
 a { color:#666; text-decoration:none; }
 body {background: #f0f0f0;}
-.install-box { width:700px; margin:5% auto 0 auto; border:1px solid #ccc; padding-bottom:30px;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;color: #666;background: #eeeeec;}
-.head { height:50px; line-height:60px; font-size:16px; text-align:center;}
+
+.head { height:50px; line-height:60px;margin-left:20%; font-size:16px; padding-left:90px;text-align:center;}
+.install {margin-left:30%;padding:20px 0 0 0;}
+
+
 .install-button {margin-top: 20px; text-align:center; }
 .install-error { margin:auto; line-height:35px; text-align:center; color:#F00 }
 .copyright { line-height:25px; padding-top:10px; text-align:center; color:#999;font-family: 微软雅黑; }
 .copyright a { color:#2e3436 }
 .red{font-weight: 700;color: red;font-size: 18px;}
-.install {float:left; width:670px; padding:50px 0 0 0;}
+
 .message{text-align:center}
 .install .formitm { padding: 8px 0px; height:30px; line-height: 30px; }
 .install .lab { float: left; width: 260px; text-align: right; }
@@ -19,15 +28,17 @@ background: #117ed2;
 background-image: linear-gradient(to bottom,#2488d4 0,#1c5bad 100%); }
 
 .button:hover {background: #2488d4; background-image: linear-gradient(to bottom,#37aaea 0,#117ed2 100%);}
+.main {
+  position: relative;
+}
+.main{ width:1200px; margin:5% auto 0 auto; border:1px solid #ccc; padding-bottom:30px;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;color: #666;background: #eeeeec;}
 
-.main{ width:900px; margin:5% auto 0 auto; border:1px solid #ccc; padding-bottom:30px;-moz-border-radius: 4px;-webkit-border-radius: 4px;border-radius: 4px;color: #666;background: #eeeeec;}
-.main .sidebar{float:left; width:230px; overflow:hidden;}
-.main .sidebar .step{}
+.main .sidebar{float:left; width:200px; overflow:hidden;border:1px solid #ccc; }
+.main .sidebar .step{margin:10px auto auto 15px;}
 .main .sidebar .step ul{clear:both; overflow:hidden;}
 .main .sidebar .step ul li{float:left; height:30px; line-height:30px;}
-.main .sidebar .step ul .statusdot{width:30px;}
-.main .sidebar .step ul .name{color:#333;}
-.main .sidebar .step .done .statusdot{background:url(mark-ok.png) 10px 6px no-repeat;}
+
+.main .sidebar .step ul .name{color:#888a85;}
 .main .sidebar .step .done .name{color:#093;}
-.main .sidebar .step .current .statusdot{background:url(statusdot.png) 12px 11px no-repeat;}
-.main .sidebar .step .current .name{font-weight:bold; color:#000;}
+.main .sidebar .step .current .name{color:#000000;font-weight:bold;}
+.main .title {color:#2e3436;width:100%;text-align:center;border:1px solid #ccc;height:30px;padding:15px auto 15px auto;font-size:18px; }

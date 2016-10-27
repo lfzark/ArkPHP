@@ -1,8 +1,6 @@
 <?php
-
-
-class Model extends Ormer {
-
+class _Model extends Ormer {
+	
 	/**
 	 * Constructor
 	 *
@@ -14,8 +12,6 @@ class Model extends Ormer {
 		parent::__construct ();
 		SimpleLogger::debug ( "Model Class Initialized" );
 	}
-	
-
 }
 
 ?>

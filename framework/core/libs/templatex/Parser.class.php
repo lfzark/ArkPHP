@@ -39,6 +39,7 @@ class Parser {
 			$this->_tpl = preg_replace ( $_patten, "<?php echo \$this->_vars['$1'] $2 $3;?>", $this->_tpl );
 		}
 	}
+	
 	/**
 	 * 解析普通对象
 	 * @date: 2015-3-20
@@ -53,7 +54,12 @@ class Parser {
 	}
 	
 	
-	//解析if语句
+	/**
+	 * 解析if语句
+	 * @date: 2015-3-20
+	 * @author: Ark <lfzlfz@126.com>
+	 * @return: void
+	 */
 	private function parIf() {
 		
 		$_pattenIf = '/\{if\s+\$([\w]+)\}/';

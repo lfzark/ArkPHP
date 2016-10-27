@@ -51,7 +51,7 @@ class ArkPHP {
 		Ark_autoload ( 'util' );
 		
 		//加载所有用户自定义Model类
-		$model_list = dir_list ( APP_PATH . 'core/models', 'php' );
+		$model_list = dir_list ( APP_PATH . 'models', 'php' );
 		
 		Ark_autoload_list ( $model_list );
 		

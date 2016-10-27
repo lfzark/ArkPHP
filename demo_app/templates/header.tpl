@@ -1,5 +1,5 @@
 <style type="text/css">
-.form-signin-heading {
+.arkphp_demo {
       color: #997;
       font-size: 18px;
       margin-top: 20px;

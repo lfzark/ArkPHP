@@ -44,6 +44,7 @@ class Plugin_api extends Controller {
 				print_r ($this->http_post_data('http://127.0.0.1:667/api/cron_plugins/'.$cron,
 															json_encode(array('agent_id'=>$agent_id,
 																	'plugin_name'=>'PortScanPlugin',
+																	'cron'=>	urldecode($cron),
 																	'param'=>array('ip_list'=>$ip_list,'bad_iplist'=>$black_list),
 																	'task_id'=>$task_id
 																	))));
@@ -82,7 +83,7 @@ class Plugin_api extends Controller {
 				'target'=>$scan_target,
 		);
 		$nodetype = 1;
-		$this->assign_task($report_hash,$agent_id,"AWVSPlugin",1,$param,$cron,$nodetype);
+		$this->assign_task($report_hash,$agent_id,"AWVSPlugin",1,$param,	urldecode($cron),$nodetype);
 		
 	}
 

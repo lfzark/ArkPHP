@@ -47,8 +47,8 @@
 							<td bgcolor="#FFFFFF" align="center" height="28">GD 库</td>
 							<td bgcolor="#FFFFFF" align="center">2.0.1 +</td>
 							<td bgcolor="#FFFFFF" align="center">2.1.0</td>
-							<td bgcolor="#FFFFFF" align="center"><?php echo $gd_version ? $gd_version : '不支持';?></td>
-							<td bgcolor="#FFFFFF" align="center"><?php echo round($gd_version)>=2?'√':'×';?></td>
+							<td bgcolor="#FFFFFF" align="center"><?php //echo $gd_version ? $gd_version : '不支持';?></td>
+							<td bgcolor="#FFFFFF" align="center"><?php //echo round($gd_version)>=2?'√':'×';?></td>
 						</tr>
 						<tr>
 							<td bgcolor="#FFFFFF" align="center" height="28">函数依赖性检测</td>
@@ -78,7 +78,7 @@
 				//				}
 						?>
 						<tr>
-							<td bgcolor="#FFFFFF" height="28">&nbsp;&nbsp;&nbsp;<?php echo $folder?$folder:'/';?></td>
+							<td bgcolor="#FFFFFF" height="28">&nbsp;&nbsp;&nbsp;<?php // echo $folder?$folder:'/';?></td>
 							<td bgcolor="#FFFFFF" align="center"><img src="template/images/ok.png" /> 可写</td>
 							<td bgcolor="#FFFFFF" align="center"><?php //echo check_iswriteable($folder)?'<img src="template/images/ok.png" /> 可写':'<img src="template/images/not.png" /> 不可写';?></td>
 						</tr>

@@ -8,12 +8,17 @@
  * @author Ark
  * 2014-10-11
  */
-
+class A{
+	
+}
 class Controller {
 
 	private static $instance;
 	
-	protected $tpl_x;
+	private $tpl_x;
+	protected $m;
+	protected $c;
+	
 	/**
 	 * Constructor
 	 */
@@ -22,16 +27,26 @@ class Controller {
 		self::$instance = & $this;
 
 		$this->tpl_x = new Templatex ();
+		$this->m = new StdClass();
+		$this->c = new StdClass();
 		
 		SimpleLogger::debug ( "Controller class is initialized" );
 	
 	}
 
-	function load($model_url){
-		
-		$this->$model_url = '';
-		
+	
+	function load_model($model_name){
+
+		$this->m->$model_name = new $model_name();
+	
 	}
+	
+	function load_controller($controller_name){
+	
+		$this->c->$controller_name =  new $controller_name();;
+	
+	}
+	
 	
 	function param_safe_filter($param){
 		return $param;
@@ -69,9 +84,13 @@ class Controller {
 
 		$this->tpl_x->display ( $tpl );
 	}
+
 	
 	public static function &get_instance() {
 		return self::$instance;
 	}
+	
+	
 }
+
 ?>

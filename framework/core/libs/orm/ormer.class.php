@@ -55,7 +55,19 @@ class Ormer {
 
 
 	}
-
+	
+	/**
+	 * 获取表名
+	 * @date: 2016-10-26
+	 * @author: Ark <lfzlfz@126.com>
+	 * @return: string
+	 */
+	
+	function get_table_name() {
+		return $this->tableName;
+	}
+	
+	
 	/**
 	 * if tableName Exist in the db.
 	 * @return int

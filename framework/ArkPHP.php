@@ -44,7 +44,7 @@ if(!defined("INDEX_PAGE")){
 	define ( 'INDEX_PAGE', basename($_SERVER['SCRIPT_NAME']));
 }
 
-//echo BASE_PATH;
+
 // Path to the framework folder
 $framework_path = str_replace ( '\\', DS, BASE_PATH ) . DS . 'framework/';
 
@@ -74,6 +74,8 @@ define ( 'SELF', pathinfo ( __FILE__, PATHINFO_BASENAME ) );
 //define ( 'BASEPATH', str_replace ( "\\", "/", $framework_path ) );
 //////////////////
 
+define('SYS_PLUGIN',FRAMEWORK_PATH.DS.'plugins'. DS);
+define('APP_PLUGIN',APP_PATH.DS.'plugins'. DS);
 
 define ( 'TPL_DIR', APP_PATH . 'templates/' );
 define ( 'TPL_C_DIR', APP_PATH . 'templates_c/' );

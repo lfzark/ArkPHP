@@ -1033,7 +1033,6 @@ class Ormer {
 
 		$rs = $this->connector->query ( "SHOW TABLES FROM " . $database );
 		$tables = $rs->fetchAll ();
-
 		return $tables;
 	}
 

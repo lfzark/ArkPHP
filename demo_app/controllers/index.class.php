@@ -11,6 +11,7 @@ class Index extends Controller {
 	 */
 
 	function run() {
+ 
 		
 		$this->assign('tips','I am Tips');		
 		$this->display ( 'demo.tpl' );

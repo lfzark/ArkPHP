@@ -11,9 +11,14 @@ class Index extends Controller {
 	 */
 
 	function run() {
- 
+		
+	
+		//echo $this->p->run('make_hash');
+		
+		echo $this->p->run('get_md5','123456');
 		
 		$this->assign('tips','I am Tips');		
+		
 		$this->display ( 'demo.tpl' );
 		$this->load_model('ArkUser');
 

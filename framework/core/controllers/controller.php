@@ -18,6 +18,7 @@ class Controller {
 	private $tpl_x;
 	protected $m;
 	protected $c;
+  protected $p;
 	
 	/**
 	 * Constructor
@@ -30,6 +31,8 @@ class Controller {
 		$this->m = new StdClass();
 		$this->c = new StdClass();
 		
+		global $pm;
+		$this->p = $pm;
 		SimpleLogger::debug ( "Controller class is initialized" );
 	
 	}

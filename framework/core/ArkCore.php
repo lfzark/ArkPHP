@@ -49,11 +49,19 @@ class ArkPHP {
 		Ark_autoload ( 'model' );
 		//加载工具类
 		Ark_autoload ( 'util' );
+		//加载插件管理器
+		Ark_autoload ( 'PluginManager' );
+		//加载插件基类
+		Ark_autoload ( 'Plugin' );
 		
 		//加载所有用户自定义Model类
 		$model_list = dir_list ( APP_PATH . 'models', 'php' );
 		
 		Ark_autoload_list ( $model_list );
+		
+		//初始化插件管理器
+		global $pm;
+		$pm = new PluginManager();
 		
 		//_autoload('Smarty.class','libs/smarty');
 		//加载路由类
@@ -62,7 +70,7 @@ class ArkPHP {
 		//初始化路由
 		$router = new Router ();
 		$router->route ();
-		
+
 		//加载app入口
 		require_once APP_PATH . 'index.php';
 	}

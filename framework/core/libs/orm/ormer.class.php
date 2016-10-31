@@ -358,6 +358,9 @@ class Ormer {
 				$returnArray[] = trim($select);
 			}
 		}
+		if(!$returnArray){
+			return "";
+		}
 
 		return join(" ", $returnArray);
 	}

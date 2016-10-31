@@ -49,8 +49,11 @@ class PluginManager
 	
 	public function get_plugin_list(){
 		
-		$plugins=array(array("directory"=>"crypt",
-				"name"=>"encrypt"));
+		$plugins=array(array("directory"=>"encrypt","name"=>"encrypt"),
+										 array("directory"=>"time","name"=>"time"),
+										 array("directory"=>"php_check","name"=>"php_check")
+				
+		);
 		return $plugins;
 		
 	}
@@ -65,8 +68,8 @@ class PluginManager
 	}
 	
 	
-	public function run($hook,$param){
-		
+	public function run($hook,$param=NULL){
+
 		$result = '';
 
 		if (isset($this->_registered_plugin[$hook]) && is_array($this->_registered_plugin[$hook]) && count($this->_registered_plugin[$hook]) > 0)
@@ -79,8 +82,11 @@ class PluginManager
 				$method = $listener[1];
 				if(method_exists($class,$method))
 				{
-
+					if($param==NULL){
+					$result .= $class->$method();
+					}else{
 					$result .= $class->$method($param);
+					}
 				}
 			}
 		}

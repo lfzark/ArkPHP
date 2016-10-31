@@ -1,5 +1,4 @@
 <?php
-
 global $application_name ;
 
 $application_name = 'distributor_api';

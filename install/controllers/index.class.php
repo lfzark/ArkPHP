@@ -1,88 +1,118 @@
 <?php
-
-class StepClass{
-	public $step1='done';
-	public $step2='done';
-	public $step3='done';
-	public $step4='done';
-	public $step5='done';
-	
-	function __construct($a,$b,$c,$d,$e) {
-		$this->step1=$a;
-		$this->step2=$b;
-		$this->step3=$c;
-		$this->step4=$d;
-		$this->step5=$e;
+class StepClass {
+	public $step1 = 'done';
+	public $step2 = 'done';
+	public $step3 = 'done';
+	public $step4 = 'done';
+	public $step5 = 'done';
+	function __construct($a, $b, $c, $d, $e) {
+		$this->step1 = $a;
+		$this->step2 = $b;
+		$this->step3 = $c;
+		$this->step4 = $d;
+		$this->step5 = $e;
 	}
-
-
 }
-
 class Index extends Controller {
-
+	
 	/**
 	 *
 	 * @date: 2014-9-12
-	 * @author: Ark <lfzlfz@126.com>
-	 * @return: null
+	 *
+	 * @author : Ark <lfzlfz@126.com>
+	 * @return : null
 	 */
-
 	function run() {
-		$step_class = new StepClass('current','todo','todo','todo','todo');
-		$this->assign('step_class',$step_class);
- 	
+		if ($this->p->run ( 'check_installed' )) {
+			$this->step_already_finished ();
+			exit ();
+		}
+		$step_class = new StepClass ( 'current', 'todo', 'todo', 'todo', 'todo' );
+		$this->assign ( 'step_class', $step_class );
+		
 		$this->display ( 'step1.tpl' );
-		
 	}
-	
-	//检测版本号
-	function check_php_version(){
-		
-		if(substr(PHP_VERSION, 0, 3) < '7.0')
-		{
-			return False;
-			//exit('尊敬的用户您好，由于您的php版本过低，不能安装本软件，为了系统功能全面可用，请升级到5.0或更高版本再安装，谢谢！<br />您可以登录 arkphp.com');
-		}
-		return True;
-	}
-	
-	
-	function check_installed(){
-		//提示已经安装
-		if(is_file(APP_PATH.'/arkcms_install.lock'))
-		{
-			$this->step_already_finished();
-			exit();
-		}
-	}
-	
-	function check_mysql(){
-		if(!function_exists('mysqli_connect'))
-		{
-			exit('MySqli is required!');
-		}
-	}
-
-
 	function step2() {
 		
-		echo $this->check_installed();
-		$step_class = new StepClass('done','current','todo','todo','todo');
-		$this->assign('step_class',$step_class);
+		/*
+		 * 所需函数检测
+		 */
+		$func_items = array (
+				'curl_init',
+				'file_get_contents',
+				'file_put_contents',
+				'json_encode',
+				'json_decode',
+				'not_to_test'
+		);
+		
+		/*
+		 * 文件夹检测
+		 */
+		$folder_items = array (
+				'templates_c',
+				'upload',
+				'config'
+		);
+		
+		if ($this->p->run ( 'check_installed' )) {
+			$this->step_already_finished ();
+			exit ();
+		}
+		
+		$check_list = array (
+				'check_php_version',
+				'check_gd',
+				'check_pdo' 
+		);
+		// 'check_phpinfo'
+		
+		$writable_list = array ();
+		$available_func_list = array ();
+		foreach ( $check_list as $check_point ) {
+			
+			// echo $this->p->run ( $check_point );
+			// echo '<hr>';
+		}
+		
+		foreach ( $func_items as $func ) {
+			$available_func_list [$func] = $this->p->run ( 'check_func', $func );
+		}
+		
+		foreach ( $folder_items as $folder ) {
+			
+			$writable_list [$folder] = $this->p->run ( 'check_writable', $folder );
+		}
+		
+
+		// $this->p->run('check_writable','templates_c');
+		
+		// echo $this->p->run('check_php_version');
+		// echo $this->p->run('check_installed');
+		// echo $this->p->run('check_mysql');
+		
+		$step_class = new StepClass ( 'done', 'current', 'todo', 'todo', 'todo' );
+		$this->assign ( 'step_class', $step_class );
+		$this->assign ( 'available_func_list', $available_func_list );
+		$this->assign ( 'writable_list', $writable_list );
+		
 		$this->display ( 'step2.tpl' );
-	
+		
 	}
 	function step3() {
-	
-
+		$step_class = new StepClass ( 'done', 'done', 'current', 'todo', 'todo' );
+		$this->assign ( 'step_class', $step_class );
 		$this->display ( 'step3.tpl' );
-	
 	}
-	function step_already_finished(){
+	function step4() {
+		$step_class = new StepClass ( 'done', 'done', 'current', 'todo', 'todo' );
+		$this->assign ( 'step_class', $step_class );
+		$this->display ( 'step3.tpl' );
+	}
+	
+	function step_already_finished() {
 		$this->display ( 'already_installed.tpl' );
 	}
-
-
 }
 
 ?>

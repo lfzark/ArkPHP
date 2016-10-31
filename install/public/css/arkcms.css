@@ -11,13 +11,18 @@ body {background: #f0f0f0;}
 
 .head { height:50px; line-height:60px;margin-left:20%; font-size:16px; padding-left:90px;text-align:center;}
 .install {margin-left:30%;padding:20px 0 0 0;}
+.install table{margin-top:10px}
+.install table tr{font-weight: 650;}
+.install table tr td{text-align:center;}
+.install-button-group{  display:inline-block;height:50px;margin-left: 30%;}
+.install-button {margin-top: 20px;text-align:center;}
 
-
-.install-button {margin-top: 20px; text-align:center; }
 .install-error { margin:auto; line-height:35px; text-align:center; color:#F00 }
 .copyright { line-height:25px; padding-top:10px; text-align:center; color:#999;font-family: 微软雅黑; }
 .copyright a { color:#2e3436 }
-.red{font-weight: 700;color: red;font-size: 18px;}
+
+.red{font-weight: 600;color: red;font-size: 14px;}
+.blue{font-weight: 600;color: #3465a4;font-size: 14px;}
 
 .message{text-align:center}
 .install .formitm { padding: 8px 0px; height:30px; line-height: 30px; }
@@ -39,6 +44,6 @@ background-image: linear-gradient(to bottom,#2488d4 0,#1c5bad 100%); }
 .main .sidebar .step ul li{float:left; height:30px; line-height:30px;}
 
 .main .sidebar .step ul .name{color:#888a85;}
-.main .sidebar .step .done .name{color:#093;}
+.main .sidebar .step .done .name{color:#3465a4;}
 .main .sidebar .step .current .name{color:#000000;font-weight:bold;}
 .main .title {color:#2e3436;width:100%;text-align:center;border:1px solid #ccc;height:30px;padding:15px auto 15px auto;font-size:18px; }

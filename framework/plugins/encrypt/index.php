@@ -10,11 +10,7 @@
  * @author: Ark <lfzlfz@126.com>
  * @version: 0.1.0
  */
-
-
 class encrypt_plugin extends Plugin {
-	
-
 	function make_hash() {
 		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()+-';
 		$random = $chars [mt_rand ( 0, 73 )] . $chars [mt_rand ( 0, 73 )] . $chars [mt_rand ( 0, 73 )] . $chars [mt_rand ( 0, 73 )] . $chars [mt_rand ( 0, 73 )]; // Random 5 times
@@ -22,10 +18,11 @@ class encrypt_plugin extends Plugin {
 		return sha1 ( $content );
 	}
 	
-	function get_md5($str){
-		return md5($str);
+	function make_md5_token() {
+		
+		return $token = md5 ( uniqid ( rand () ) );
 	}
-
-	
-	
+	function get_md5($str) {
+		return md5 ( $str );
+	}
 }

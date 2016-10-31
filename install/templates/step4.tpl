@@ -8,11 +8,6 @@
 <div class="head">ArkCMS 许可协议</div>	
 <div class="install">
 hello
-
-<form>
-
-
-</form>
 <p class='copyright'>版权所有 (c) 2016 www.arkphp.com</p>
   
   <div class="install-button"><a id="submit" href="<!--{ACTION_URL}-->/index/step2" class="button">我已阅读并同意此协议</a></div>
@@ -20,8 +15,6 @@ hello
 </div>
 </div>
 </div>
-
-
 {include file="footer.tpl"}
 
 </body>

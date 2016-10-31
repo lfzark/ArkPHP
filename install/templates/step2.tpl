@@ -54,6 +54,14 @@
 							<td bgcolor="#FFFFFF" align="center" height="28">函数依赖性检测</td>
 							<td bgcolor="#FFFFFF" colspan="4">
 
+{foreach $available_func_list(key,value)} 
+{if @value == 1}
+<span class='blue'>{@key}</span>
+{else}
+<span class='red'>{@key}</span>
+{/if} 
+&nbsp;      
+{/foreach}
 							</td>
 						</tr>
 						<tr>
@@ -63,32 +71,43 @@
 					</table>
 					<br />
 					<strong>2、目录、文件权限检测</strong>
-					<table width="100%" cellpadding="0" cellspacing="1" bgcolor="#DDDDDD" border="0">
+					<table width="90%" cellpadding="0" cellspacing="1" bgcolor="#DDDDDD" border="0">
 						<tr>
 							<th bgcolor="#EEEEEE" height="28">文件或目录</th>
 							<th bgcolor="#EEEEEE">所需状态</th>
 							<th bgcolor="#EEEEEE">当前状态</th>
 						</tr>
-						<?php
-//							foreach($folder_items as $folder)
-//							{
-	//							if(!check_iswriteable($folder))
-		//						{
-			//						$cantsubmit='1';
-				//				}
-						?>
-						<tr>
-							<td bgcolor="#FFFFFF" height="28">&nbsp;&nbsp;&nbsp;<?php // echo $folder?$folder:'/';?></td>
-							<td bgcolor="#FFFFFF" align="center"><img src="template/images/ok.png" /> 可写</td>
-							<td bgcolor="#FFFFFF" align="center"><?php //echo check_iswriteable($folder)?'<img src="template/images/ok.png" /> 可写':'<img src="template/images/not.png" /> 不可写';?></td>
-						</tr>
+						
+
+{foreach $writable_list(key,value)} 
+
+		<tr>
+							<td bgcolor="#FFFFFF" height="28">{@key}</td>
+							<td bgcolor="#FFFFFF" align="center">可写</td>
+							<td bgcolor="#FFFFFF" align="center">
+{if @value == 1}
+<span class='blue'>
+可写
+</span>
+{else}
+<span class='red'>
+不可写
+</span>
+{/if}
+</td>
+		</tr>
+       
+{/foreach}
+
+				
 						<?php// }?>
 					</table>
 
 </div>
+<div class='install-button-group'>
 
-
-
+<div class="install-button"><a id="submit" href="<!--{ACTION_URL}-->/index/step3" class="button">下一步</a></div>
+</div>
 {include file="footer.tpl"}
 </body>
 </html>

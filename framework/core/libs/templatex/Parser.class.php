@@ -34,9 +34,16 @@ class Parser {
 	 * @return: void
 	 */
 	private function parSimpleExpression() {
+		
 		$_patten = '/\{\$([\w]+)\s+(\+|-|\*|%|\/)\s+([\w]+)\}/';
 		if (preg_match ( $_patten, $this->_tpl )) {
 			$this->_tpl = preg_replace ( $_patten, "<?php echo \$this->_vars['$1'] $2 $3;?>", $this->_tpl );
+		}
+		
+		$_patten = '/\{\$([\w]+)\s+(\+|-|\*|%|\/)\s+\$([\w]+)\}/';
+		
+		if (preg_match ( $_patten, $this->_tpl )) {
+			$this->_tpl = preg_replace ( $_patten, "<?php echo \$this->_vars['$1'] $2 \$this->_vars['$3'];?>", $this->_tpl );
 		}
 	}
 	
@@ -65,18 +72,25 @@ class Parser {
 		$_pattenIf = '/\{if\s+\$([\w]+)\}/';
 		$_pattenIfMemberVar = '/\{if\s+@([\w]+\[\'[\w]+\'])\s?\}/';
 		$_pattenIfCondition = '/\{if\s+@([\w]+\[\'[\w]+\'])\s+(\==|!=|>|<|<=|>=)\s+([\w]+)\}/';
+		$_pattenIfConditionVar = '/\{if\s+@([\w]+)\s+(\==|!=|>|<|<=|>=)\s+([\w]+)\}/';
 		$_pattenEndIf = '/\{\/if\}/';
 		$_pattenElse = '/\{else\}/';
-	 
-		if (preg_match ( $_pattenIfCondition, $this->_tpl )||preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
+		
+		if (preg_match ( $_pattenIfConditionVar, $this->_tpl )||preg_match ( $_pattenIfCondition, $this->_tpl )||preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
+			
 			if (preg_match ( $_pattenEndIf, $this->_tpl )) {
+
 				$this->_tpl = preg_replace ( $_pattenIfCondition, "<?php if ($$1 $2 $3) {?>", $this->_tpl );
+				$this->_tpl = preg_replace ( $_pattenIfConditionVar, "<?php if ($$1 $2 $3) {?>", $this->_tpl );
+				
 				$this->_tpl = preg_replace ( $_pattenIf, "<?php if (\$this->_vars['$1']) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIfMemberVar, "<?php if ($$1) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenEndIf, "<?php } ?>", $this->_tpl );
+				
 				if (preg_match ( $_pattenElse, $this->_tpl )) {
 					$this->_tpl = preg_replace ( $_pattenElse, "<?php } else { ?>", $this->_tpl );
 				}
+
 			} else {
 				exit ( 'ERROR：if语句没有关闭！' );
 			}
@@ -101,14 +115,16 @@ class Parser {
 				$this->_tpl = preg_replace ( $_pattenForeach, "<?php foreach (\$this->_vars['$1'] as \$$2=>\$$3) { ?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenEndForeach, "<?php } ?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenInnerVar, "<?php foreach (\$$1 as \$$2=>\$$3) { ?>", $this->_tpl );
-				
+	
 				if (preg_match ( $_pattenVar, $this->_tpl )) {
 					$this->_tpl = preg_replace ( $_pattenVar, "<?php echo \$$1?>", $this->_tpl );
 				}
+
 				//成员变量匹配
 				if (preg_match ( $_pattenMemberVar, $this->_tpl )) {
 					$this->_tpl = preg_replace ( $_pattenMemberVar, "<?php echo \$$1?>", $this->_tpl );
 				}
+
 				
 			} else {
 				exit ( 'ERROR：foreach语句必须有结尾标签！' );
@@ -197,6 +213,7 @@ class Parser {
 		$this->parObject();
 		
 		$this->parIf ();
+
 		$this->parForeach ();
 
 		$this->parCommon ();

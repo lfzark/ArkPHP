@@ -43,7 +43,8 @@ class Index extends Controller {
 				'file_put_contents',
 				'json_encode',
 				'json_decode',
-				'not_to_test'
+				'not_to_test',
+				'mysqli_connect'
 		);
 		
 		/*
@@ -63,16 +64,17 @@ class Index extends Controller {
 		$check_list = array (
 				'check_php_version',
 				'check_gd',
-				'check_pdo' 
+				'check_pdo',
+				'check_upload_max'
 		);
+		
 		// 'check_phpinfo'
 		
 		$writable_list = array ();
 		$available_func_list = array ();
 		foreach ( $check_list as $check_point ) {
-			
-			// echo $this->p->run ( $check_point );
-			// echo '<hr>';
+			$this->assign ( $check_point, $this->p->run ( $check_point ));
+
 		}
 		
 		foreach ( $func_items as $func ) {
@@ -84,13 +86,6 @@ class Index extends Controller {
 			$writable_list [$folder] = $this->p->run ( 'check_writable', $folder );
 		}
 		
-
-		// $this->p->run('check_writable','templates_c');
-		
-		// echo $this->p->run('check_php_version');
-		// echo $this->p->run('check_installed');
-		// echo $this->p->run('check_mysql');
-		
 		$step_class = new StepClass ( 'done', 'current', 'todo', 'todo', 'todo' );
 		$this->assign ( 'step_class', $step_class );
 		$this->assign ( 'available_func_list', $available_func_list );
@@ -99,20 +94,36 @@ class Index extends Controller {
 		$this->display ( 'step2.tpl' );
 		
 	}
+	
 	function step3() {
 		$step_class = new StepClass ( 'done', 'done', 'current', 'todo', 'todo' );
 		$this->assign ( 'step_class', $step_class );
 		$this->display ( 'step3.tpl' );
 	}
 	function step4() {
-		$step_class = new StepClass ( 'done', 'done', 'current', 'todo', 'todo' );
+		
+		$step_class = new StepClass ( 'done', 'done', 'done', 'current', 'todo' );
 		$this->assign ( 'step_class', $step_class );
-		$this->display ( 'step3.tpl' );
+		$this->display ( 'step4.tpl' );
+
+		echo $this->post('data')['admin_name'];
+		echo $this->post('data')['admin_pass'];
+		
+		$this->p->run('import_db',array('localhost','3306',$this->post('data')['db_user'],$this->post('data')['db_pass'],$this->post('data')['db_name'],'arkcms.sql'));
+
+
+	}
+	
+	function step5() {
+		$step_class = new StepClass ( 'done', 'done', 'done', 'done', 'done' );
+		$this->assign ( 'step_class', $step_class );
+		$this->display ( 'step5.tpl' );
 	}
 	
 	function step_already_finished() {
 		$this->display ( 'already_installed.tpl' );
 	}
+	
 }
 
 ?>

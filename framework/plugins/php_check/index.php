@@ -24,6 +24,7 @@ class php_check_plugin extends Plugin {
 	 * 检测PHP版本号
 	 */
 	function check_php_version() {
+		return substr ( PHP_VERSION, 0, 3);
 		if (substr ( PHP_VERSION, 0, 3 ) < '7.0') {
 			return False;
 			// exit('尊敬的用户您好，由于您的php版本过低，不能安装本软件，为了系统功能全面可用，请升级到5.0或更高版本再安装，谢谢！<br />您可以登录 arkphp.com');
@@ -78,11 +79,7 @@ class php_check_plugin extends Plugin {
 		if ($pdoMySqlResult === true) {
 			$this->pdoMySqlVersion = phpversion ( 'pdo_mysql' );
 		}
-		return array (
-				$result,
-				$this->pdoVersion,
-				$this->pdoMySqlVersion 
-		);
+		return $result;
 	}
 	
 	/*
@@ -119,6 +116,10 @@ class php_check_plugin extends Plugin {
 			return true;
 		}
 		return false;
+	}
+	
+	function check_upload_max(){
+		return substr(@ini_get('upload_max_filesize'), 0, -1);
 	}
 	function check_phpinfo() {
 		phpinfo ();

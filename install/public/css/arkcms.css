@@ -5,6 +5,7 @@
           box-sizing: border-box;
 }
 
+.tips {color:#1689d1;font-weight:600;font-size:16px	}
 body, input { font:14px/1.5 arial, "微软雅黑"; color:#666; outline:0; }
 a { color:#666; text-decoration:none; }
 body {background: #f0f0f0;}
@@ -18,16 +19,19 @@ body {background: #f0f0f0;}
 .install-button {margin-top: 20px;text-align:center;}
 
 .install-error { margin:auto; line-height:35px; text-align:center; color:#F00 }
-.copyright { line-height:25px; padding-top:10px; text-align:center; color:#999;font-family: 微软雅黑; }
-.copyright a { color:#2e3436 }
+.copyright { line-height:25px; margin-top:40px;padding-top:10px; text-align:center; color:#999;font-family: 微软雅黑; }
+.copyright a { color:#3465a4 }
 
 .red{font-weight: 600;color: red;font-size: 14px;}
 .blue{font-weight: 600;color: #3465a4;font-size: 14px;}
 
 .message{text-align:center}
+
 .install .formitm { padding: 8px 0px; height:30px; line-height: 30px; }
 .install .lab { float: left; width: 260px; text-align: right; }
-.u-ipt { color: #333;float: left; width: 180px; padding: 5px; height: 17px; border: 1px solid #D9D9D9; border-top-color: #c0c0c0; line-height: 17px; margin-right: 5px; vertical-align: middle; background:#f5f5f5}
+.form_button { float: left; width: 100px;height:35px ;text-align: center; padding:5px; font-size: 16px; cursor: pointer;color:#333;border-radius: 3px;background: #117ed2;color: #FFF;background-image: linear-gradient(to bottom,#2488d4 0,#1c5bad 100%); }
+
+.u-ipt { color: #333; width: 180px; padding: 5px; height: 30px; border: 1px solid #D9D9D9; border-top-color: #c0c0c0; line-height: 17px; margin-right: 5px; vertical-align: middle; background:#f5f5f5}
 .button { padding:10px 40px; font-size: 16px; cursor: pointer;color:#333;border-radius: 3px;color: #FFF;
 background: #117ed2;
 background-image: linear-gradient(to bottom,#2488d4 0,#1c5bad 100%); }

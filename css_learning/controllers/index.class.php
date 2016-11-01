@@ -53,6 +53,10 @@ class Index extends Controller {
 		$this->display ( (__FUNCTION__.'.tpl') );
 	}
 	
+	function exercise5_navi(){
+		$this->assign('css_file',(__FUNCTION__.'.css'));
+		$this->display ( (__FUNCTION__.'.tpl') );
+	}
 }
 
 ?>

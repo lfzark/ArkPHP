@@ -1,0 +1,22 @@
+{
+  "name": "lfzark/arkphp",
+  "description": "ArkPHP Framework",
+  "keywords": [
+    "arkphp"
+  ],
+  "homepage": "http://arkphp.com",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "ark1ee",
+      "email": "lfzlfz@126.com",
+      "homepage": "http://arkphp.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+  }
+}

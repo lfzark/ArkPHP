@@ -111,6 +111,26 @@ class Templatex {
 			//include $_cacheFile;
 		}
 	}
-
+	/**
+	 * 函数display显示模板内容,原始显示不作解析,用于前端构建
+	 * 输入文件路径
+	 *
+	 * @param string 解析文件路径
+	 * @return void
+	 */
+	public function origin_display($_file) {
+	
+		$_tplFile = TPL_DIR . $_file;
+	
+			
+		if (! file_exists ( $_tplFile )) {
+			exit ( 'ERROR :TPL Files Not Found.' );
+		}
+	
+		echo file_get_contents ( $_tplFile );
+	}
+	
+	
 }
+
 ?>

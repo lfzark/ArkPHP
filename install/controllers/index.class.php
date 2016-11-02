@@ -29,7 +29,7 @@ class Index extends Controller {
 		}
 		$step_class = new StepClass ( 'current', 'todo', 'todo', 'todo', 'todo' );
 		$this->assign ( 'step_class', $step_class );
-		
+		//$this->origin_display('step1.tpl');
 		$this->display ( 'step1.tpl' );
 	}
 	function step2() {

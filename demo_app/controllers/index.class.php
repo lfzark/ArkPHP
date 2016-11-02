@@ -8,22 +8,16 @@ class Index extends Controller {
 	 * @author : Ark <lfzlfz@126.com>
 	 * @return : null
 	 */
-	
 	public function __construct() {
-		parent::__construct();
+		parent::__construct ();
 		$this->load_model ( 'ArkUser' );
 	}
-	
-	
 	function run() {
-		
-		// echo $this->p->run('make_hash');
-		
-		
 		$this->assign ( 'tips', 'I am Tips' );
 		
 		$this->display ( 'demo.tpl' );
-		
+	}
+	function insert() {
 		if ($this->m->ArkUser->add_user ()) {
 			echo 'add user successfully.';
 		} else {
@@ -31,19 +25,16 @@ class Index extends Controller {
 		}
 		
 		echo '<hr>';
+	}
+	function query_one() {
 		echo $this->m->ArkUser->get_user ()->username;
-		
-		echo '<hr>';
-		$this->m->ArkUser->reset();
-		
-		echo 'rowCount:'.	$this->m->ArkUser->rowCount().'=====';
-	
-		
-		$this->m->ArkUser->reset();
-		
-	
+	}
+	function query_row_count() {
+		echo 'rowCount:' . $this->m->ArkUser->rowCount ();
+	}
+	function query_many() {
 		$r_many = $this->m->ArkUser->get_user_many ();
-		//$value->delete();
+		// $value->delete();
 		if ($r_many)
 			foreach ( $r_many as $value ) {
 				
@@ -53,15 +44,8 @@ class Index extends Controller {
 				print_r ( $value->username );
 			}
 	}
-
-	function test_md5(){
-		echo $this->p->run ( 'get_md5', '123456' );
-		echo '<hr>';
-		echo $this->p->run ('make_hash');
-		echo '<hr>';
-		echo $this->p->run('make_md5_token');
-		echo '<hr>';
-		echo $this->p->run('get_now');
+	function 	() {
+		echo $this->p->run ( 'make_hash' );
 	}
 }
 

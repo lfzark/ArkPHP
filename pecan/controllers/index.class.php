@@ -14,10 +14,20 @@ class Index extends Controller {
 	}
 	
 	function run() {
-		//$this->m->ArkPost->add_post();
-   $this->assign('tips','tips');
-		$this->display ( 'index.tpl' );
+		$postlist = $this->m->ArkPost->get_post_list ($this->get('p'));
+		$this->assign('postlist',$postlist);
+		$this->display ( 'index.html' );
 	}
+
+	function show_post(){
+		//print_r($this->m->ArkPost->get_post ( 3 ));
+		$post = $this->m->ArkPost->get_post ($this->get('id'));
+		
+		$post['content'] = htmlspecialchars_decode($post['content']);
+		$this->assign('post',$post);
+		$this->display ( 'show_post.html' );
+	}
+	
 	/*
 	 * 
 	 CREATE TABLE `ark_user` (

@@ -24,6 +24,11 @@ class time_plugin extends Plugin {
 		date_default_timezone_set('PRC'); //设置中国时区
 		return date('y-m-d h:i:s',time());
 	}
+	
+	function get_timestamp(){
+		return time();
+	}
+	
 }
 
 

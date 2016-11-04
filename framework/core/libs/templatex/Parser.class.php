@@ -60,7 +60,18 @@ class Parser {
 		}
 	}
 	
-	
+	/**
+	 * 解析数组array
+	 * @date: 2016-11-04
+	 * @author: Ark <lfzlfz@126.com>
+	 * @return: void
+	 */
+	private function parArray() {
+		$_patten = "/\{[\$]([\w]+)\['([\w]+)\']\}/";
+		if (preg_match ( $_patten, $this->_tpl )) {
+			$this->_tpl = preg_replace ( $_patten, "<?php echo \$this->_vars['$1']['$2'];?>", $this->_tpl );
+		}
+	}
 	/**
 	 * 解析if语句
 	 * @date: 2015-3-20
@@ -135,8 +146,9 @@ class Parser {
 	
 	function getParIncludeList(){
 		
-		$_patten = '/\{include\s+file=\"([\w\.\-]+)\"\}/';
+		$_patten = '/\{include\s+file\s?=\s?[\"\']([\w\.\-]+[\\/]?[\w\.\-]+)[\"\']\s?}/';
 		preg_match_all ( $_patten, $this->_tpl, $_file );
+
 		return $_file;
 	}
 	
@@ -149,7 +161,7 @@ class Parser {
 	 */
 
 	private function parInclude() {
-		$_patten = '/\{include\s+file=\"([\w\.\-]+)\"\}/';
+		$_patten = '/\{include\s+file\s?=\s?[\"\']([\w\.\-]+[\\/]?[\w\.\-]+)[\"\']\s?}/';
 		while ( preg_match ( $_patten, $this->_tpl, $_file ) ) {
 			
 
@@ -210,6 +222,7 @@ class Parser {
 
 
 		$this->parVar ();
+		$this->parArray();
 		$this->parSimpleExpression();
 		$this->parObject();
 		

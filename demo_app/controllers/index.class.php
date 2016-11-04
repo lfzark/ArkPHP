@@ -29,9 +29,11 @@ class Index extends Controller {
 	function query_one() {
 		echo $this->m->ArkUser->get_user ()->username;
 	}
+	
 	function query_row_count() {
 		echo 'rowCount:' . $this->m->ArkUser->rowCount ();
 	}
+	
 	function query_many() {
 		$r_many = $this->m->ArkUser->get_user_many ();
 		// $value->delete();

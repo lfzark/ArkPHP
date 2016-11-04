@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+{include file = "header.tpl"}
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-green-light layout-top-nav">
+<div class="wrapper">
+
+  <header class="main-header">
+   {include file = 'sidebar_horizontal.tpl'}
+  </header>
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+      <!-- Content Header (Page header) -->
+
+
+      <!-- Main content -->
+      <section class="content">
+    <div class='row'>
+ <div class="col-md-9">
+ 
+ <div class="box box-success post-box">
+            <div class="box-header with-border">
+              <h2 class="box-title">
+              <a itemtype="url" href="r.html" title="Kali  Phisher">{$post['title']}</a></h2>
+              </div>
+             <!-- /.box-header -->
+            <div class="box-body">
+ <div class="post type-post appeared">
+ 
+<div class="post-info">
+
+	<span class="author">作者: <a itemprop="name" href="/1/" rel="author">ark1ee</a></span>
+
+	  <!-- 分类页面category不显示 -->
+
+  		<span class="category">分类: <a href=""></a>{$post['category']}</span>
+
+	<span class="date">时间: {$post['pubtime']}</span>
+
+	<span class="date">浏览: {$post['view']} 次 </span>
+</div>
+
+
+
+ <!-- /post details -->         
+<!-- /post details --> 
+<div class="post-entry">
+{$post['content']}
+</div>
+				</div>
+				</div>
+				
+ 	 </div>
+ 	 
+ </div>
+ 
+ 
+  <div class="col-md-3">
+
+
+          
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">About Me</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+              <p class="text-muted">
+                B.S. in Computer Science from the University of Tennessee at Knoxville
+              </p>
+
+              <hr>
+
+              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+              <p class="text-muted">Malibu, California</p>
+
+              <hr>
+
+              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+              <p>
+                <span class="label label-danger">UI Design</span>
+                <span class="label label-success">Coding</span>
+                <span class="label label-info">Javascript</span>
+                <span class="label label-warning">PHP</span>
+                <span class="label label-primary">Node.js</span>
+              </p>
+
+              <hr>
+
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">分类</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="mailbox.html"><i class="fa fa-inbox"></i> 默认分类
+                  <span class="label label-success pull-right">12</span></a></li>
+               
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+ </div>
+ 
+ </div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.3.7
+      </div>
+      <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+      reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+{include file = "footer.tpl"}
+</body>
+</html>

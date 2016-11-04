@@ -720,6 +720,19 @@ class Ormer {
 
 		return $this->hydrate($row[0]);
 	}
+	public function findOneRaw($id = null){
+		if(!is_null($id)){
+			$this->where($this->_idSelector, "=", $id);
+		}
+		$this->limit(1);
+		$row = $this->run();
+	
+		if(empty($row)){
+			return false;
+		}
+	
+		return $row[0];
+	}
 	/**
 	 * find the next elem of query
 	 * 2015.4.6 By Ark
@@ -743,7 +756,9 @@ class Ormer {
 
 		return $this->hydrate($row[0]);
 	}
+	
 	public function findPrevOne($id = null){
+		
 		if(!is_null($id)){
 			$this->where($this->_idSelector, "<", $id);
 		}
@@ -769,7 +784,17 @@ class Ormer {
 
 		return $rows ? array_map(array($this, 'createInstance'), $rows) : false;
 	}
-
+	
+	/**
+	 * find all data of query
+	 * @return  Array[]/false
+	 */
+	public function findManyRaw(){
+		$rows = $this->run();
+	
+		return $rows ;
+	}
+	
 	/**
 	 * Count the number of lines from the asked model
 	 * @return Int|Boolean

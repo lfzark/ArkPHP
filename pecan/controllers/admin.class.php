@@ -1,7 +1,7 @@
 <?php
 
 
-class News extends Controller {
+class Admin extends Controller {
 
 	/**
 	 *
@@ -11,7 +11,8 @@ class News extends Controller {
 	 */
 
 	function run() {
-		
+		$this->assign('username','ark1ee');
+		$this->display ( 'starter.html' );
 
 	}
 	

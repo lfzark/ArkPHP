@@ -10,7 +10,7 @@ OrmConnector::$config = array (
 'type' => 'mysql', 
 'host' => 'localhost',
 'port' => '3306', 
-'database' => 'arkphp', 
+'database' => 'arkblog', 
 'username' => 'root', 
 'password' => '' );
 /////////DBNAME

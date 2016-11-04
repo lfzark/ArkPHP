@@ -83,13 +83,17 @@ class Templatex {
 		require dirname ( __FILE__ ) . '/Parser.class.php';
 		$_parser = new Parser ( $_tplFile ); //模板文件
 		$include_recompile_flag = False;
+		$include_list = $_parser->getParIncludeList();
 		
-		foreach ($_parser->getParIncludeList()[1] as $include_file){
-
-			if (! file_exists ( $include_file ) || filemtime ( $include_file ) < filemtime ( $_tplFile )) {
-				$include_recompile_flag =True;
+		if ($include_list){
+			foreach ($include_list[1] as $include_file){
+			
+				if (! file_exists ( $include_file ) || filemtime ( $include_file ) < filemtime ( $_tplFile )) {
+					$include_recompile_flag =True;
+				}
 			}
 		}
+
 		
 		if (! file_exists ( $_parFile ) || filemtime ( $_parFile ) < filemtime ( $_tplFile )||$include_recompile_flag) {
 

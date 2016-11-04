@@ -1,0 +1,12 @@
+							<?php
+							$func_items=array('urlencode','urldecode');
+							foreach($func_items as $func)
+							{
+								if(disablefunc($func))
+								{
+									$cantsubmit='1';
+								}
+								echo !disablefunc($func)?$func.'()&nbsp;<img src="template/images/ok.png" />':$func.'()&nbsp;<img src="template/images/not.png" />';
+								echo '&nbsp;&nbsp;&nbsp;&nbsp;';
+							}
+							?>

@@ -46,6 +46,7 @@ function Ark_autoload_list($class_path_list) {
 	}
 
 }
+
 function gen_path($sub_path, $className) {
 	
 	return FRAMEWORK_PATH . $sub_path . $className . EXT;

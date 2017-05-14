@@ -21,8 +21,8 @@ function shutdown_function()
 
 register_shutdown_function('shutdown_function');  
 
-
 session_start();
+
 require_once (FRAMEWORK_PATH . 'core/autoload.php');
 // 'http://' . $_SERVER ['SERVER_NAME'] . ':' . $_SERVER ["SERVER_PORT"] .
 //$url = $_SERVER ["REQUEST_URI"];
@@ -45,6 +45,7 @@ class ArkPHP {
 		Ark_autoload ( 'ormer.class' );
 		//加载控制器库
 		Ark_autoload ( 'controller' );
+		
 		//加载模型类
 		Ark_autoload ( 'model' );
 		//加载工具类
@@ -53,10 +54,9 @@ class ArkPHP {
 		Ark_autoload ( 'PluginManager' );
 		//加载插件基类
 		Ark_autoload ( 'Plugin' );
-		
+
 		//加载所有用户自定义Model类
 		$model_list = dir_list ( APP_PATH . 'models', 'php' );
-		
 		Ark_autoload_list ( $model_list );
 		
 		//初始化插件管理器

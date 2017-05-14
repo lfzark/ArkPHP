@@ -1,0 +1,49 @@
+<!-- 添加角色 -->
+
+<div class='modal_j' id='add_role'>
+	<form>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="角色名" type="email" id='role_name'>
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
+			<textarea   class="form-control" id="role_permission_list"
+				placeholder="权限列表"></textarea>
+		</div>
+		<hr>
+
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='add_role_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success" onclick="role_add()">添加</button>
+</div>
+
+<div class='modal_j' id='modify_role'>
+	<form>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="admin@admin.com" id="modify_role_name">
+			<input class="form-control" placeholder="admin@admin.com" type="hidden" id="modify_role_id">
+		</div>
+		<hr>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
+			<textarea   class="form-control" id="modify_role_permission_list"
+				placeholder="权限列表"></textarea>
+		</div>
+		</div>
+		<hr>
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='modify_role_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success" onclick='role_modify_do()'>修改</button>
+</div>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+{include file = "common/header.tpl"}
+
+</head>
+
+<body class="hold-transition skin-green-light layout-top-nav">
+	<div class="wrapper">
+
+		<header class="main-header"> 
+		{include file = 'common/sidebar_horizontal.tpl'}
+		</header>
+		<!-- Full Width Column -->
+		<div class="content-wrapper">
+			<div class="container">
+
+
+				<!-- Main content -->
+				<section class="content">
+					<div class='row'>
+						<div class="col-md-9">
+
+
+							{foreach $postlist(key,value)} 
+
+							<div class="box box-success post-box">
+								<div class="box-header with-border">
+									<h2 class="box-title"> <a href="<!--{ACTION_URL}-->/index/show_post?id={@value['id_ark_post']}">{@value['title']}</a></h2>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body">
+
+									<div class="post type-post appeared">
+
+										<div class="post-info">
+
+											<span class="author">作者: <a itemprop="name" href="#"
+												rel="author">ark1ee</a></span>
+
+											<!-- 分类页面category不显示 -->
+
+											<span class="category ">分类: <a href=""></a> <span class="date green-font">{@value['category_name']}</span>
+											</span> 时间:<span class="date green-font">{@value['pubtime']}</span> <span
+												class="date">浏览: <span class="date green-font">{@value['view']} </span>次 </span>
+									  	<span><span	class="label label-success">{@value['tag']}</span>
+
+										</span>
+
+										</div>
+									
+	
+
+										<!-- /post details -->
+										<div class="post-entry">
+										{@value['abstract']}
+
+										</div>
+										<p class="more">
+												<a href="<!--{ACTION_URL}-->/index/show_post?id={@value['id_ark_post']}">阅读全文»</a>
+										</p>
+									</div>
+								</div>
+
+							</div>
+							{/foreach}
+							
+
+<ul class="pager">
+
+
+{if $pagenum == 1}
+<li class="previous disabled"><a href="#">
+{else}
+<li class="previous"><a href="<!--{ACTION_URL}-->/index/run?p={$pagenum - 1}">
+{/if}<i class="fa fa-arrow-circle-left"></i> 前一页</a></li>
+
+{if $pagenum >= $total_page}
+<li class="next disabled" ><a href="#">
+{else}
+<li class="next"><a href="<!--{ACTION_URL}-->/index/run?p={$pagenum + 1}">
+{/if}
+后一页 <i class="fa fa-arrow-circle-right"></i></a></li>
+    
+</ul>
+							
+						</div>
+
+
+						<div class="col-md-3">
+
+         {include file = "common/front_right_bar.html"}
+						</div>
+
+					</div>
+				</section>
+				<!-- /.content -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /.content-wrapper -->
+		<footer class="main-footer">
+			<div class="container">
+				<div class="pull-right hidden-xs">
+					<b>Version</b> 1.0.0
+				</div>
+				<strong>Copyright &copy; 2014-2016 <a
+					href="http://arkphp.com">arkphp.com</a>.
+				</strong> All rights reserved.
+			</div>
+			<!-- /.container -->
+		</footer>
+	</div>
+
+
+
+</body>
+
+{include file = "common/footer.tpl"}
+
+</html>

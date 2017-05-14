@@ -1,0 +1,123 @@
+<div class="box box-success">
+	<div class="box-header with-border">
+		<h3 class="box-title">About Me</h3>
+	</div>
+	<!-- /.box-header -->
+	<div class="box-body">
+		<strong><i class="fa fa-map-marker margin-r-5"></i> Me</strong>
+
+		<p class="text-muted">ID:ark1ee</p>
+
+		<hr>
+
+		<strong><i class="fa fa-pencil margin-r-5"></i> 技能</strong>
+		<hr>
+<p>
+			 
+			 <span
+				class="label label-info">Python</span> 
+			<span
+				class="label label-primary">安全</span>
+				<span class="label label-danger">分布式</span>
+				<span
+				class="label label-warning">PHP</span> 
+
+				
+		</p>
+
+		<hr>
+		<strong><i class="fa fa-file-text-o margin-r-5"></i> 没事就换的座右铭</strong>
+   <hr>
+		<p class="text-muted"> 缘起性空</p>
+	</div>
+	<!-- /.box-body -->
+</div>
+
+<div class="box box-success">
+	<div class="box-header with-border">
+		<h3 class="box-title">分类</h3>
+
+		<div class="box-tools">
+			<button type="button" class="btn btn-box-tool" data-widget="collapse">
+				<i class="fa fa-minus"></i>
+			</button>
+		</div>
+	</div>
+	<div class="box-body no-padding">
+		<ul class="nav nav-pills nav-stacked">
+
+{foreach $category_list(key,value)} 
+			<li><a href="#"><i class="fa fa-inbox"></i> {@value['category_name']}
+					<span class="label  pull-right">12</span></a></li>
+{/foreach}
+					
+
+		</ul>
+	</div>
+	<!-- /.box-body -->
+</div>
+
+<div class="box box-success">
+	<div class="box-header with-border">
+		<h3 class="box-title">热门文章</h3>
+
+		<div class="box-tools">
+			<button type="button" class="btn btn-box-tool" data-widget="collapse">
+				<i class="fa fa-minus"></i>
+			</button>
+		</div>
+	</div>
+	<div class="box-body no-padding">
+		<ul class="nav nav-pills nav-stacked">
+
+{foreach $hotest_post_title(key,value)} 
+			<li><a href="<!--{ACTION_URL}-->/index/show_post?id={@value['id_ark_post']}">{@value['title']} <span class="label view-label pull-right">{@value['view']}</span> </a></li>
+{/foreach}
+
+		</ul>
+	</div>
+	<!-- /.box-body -->
+</div>
+
+<div class="box box-success">
+	<div class="box-header with-border">
+		<h3 class="box-title">最新文章</h3>
+
+		<div class="box-tools">
+			<button type="button" class="btn btn-box-tool" data-widget="collapse">
+				<i class="fa fa-minus"></i>
+			</button>
+		</div>
+	</div>
+	<div class="box-body no-padding">
+		<ul class="nav nav-pills nav-stacked">
+{foreach $latest_post_title(key,value)} 
+			<li><a href="<!--{ACTION_URL}-->/index/show_post?id={@value['id_ark_post']}">{@value['title']} </a></li>
+{/foreach}
+		</ul>
+	</div>
+	<!-- /.box-body -->
+</div>
+
+<div class="box box-success">
+	<div class="box-header with-border">
+		<h3 class="box-title">标签</h3>
+
+		<div class="box-tools">
+			<button type="button" class="btn btn-box-tool" data-widget="collapse">
+				<i class="fa fa-minus"></i>
+			</button>
+		</div>
+	</div>
+	<div class="box-body ">
+		<p>
+			<span class="label label-danger">UI Design</span> <span
+				class="label label-success">Coding</span> 
+		</p>
+		
+	</div>
+	<!-- /.box-body -->
+</div>
+
+
+

@@ -19,10 +19,21 @@ class encrypt_plugin extends Plugin {
 	}
 	
 	function make_md5_token() {
-		
 		return $token = md5 ( uniqid ( rand () ) );
 	}
+	
 	function get_md5($str) {
 		return md5 ( $str );
 	}
+	
+	function encrypt_do($str) {
+		define ( 'SALT', 'ark1ee' );
+		return md5 ( md5 ( $str ) + SALT );
+	}
+	
+	function get_random_num(){
+		return $srand = rand(100000,999999);
+		
+	}
+	
 }

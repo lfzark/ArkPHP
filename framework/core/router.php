@@ -20,7 +20,7 @@
 		private $location;
 		function __construct() {
 
-			$QUERY_STRING = str_replace ( array(DS.SITE_NAME,DS.INDEX_PAGE), '', $_SERVER ['REQUEST_URI'] );
+			$QUERY_STRING = str_replace ( array(URL_DS.SITE_NAME,URL_DS.INDEX_PAGE), '', $_SERVER ['REQUEST_URI'] );
 			$this->QUERY_STRING = trim ( $QUERY_STRING, '/' );
 			$this->params = array ();
 			$this->url_param ['parameters'] = array ();
@@ -99,7 +99,7 @@
 			
 			$method_name = $this->url_param ['method'];
 			// echo $module_name;
-			
+			define('CURRENT_METHOD',$method_name);
 			if (file_exists ( $module_file )) {
 				
 				include ($module_file);
@@ -110,7 +110,7 @@
 				
 				if (! method_exists ( $obj_module, $method_name )) {
 					
-					die ( 'method not exist' );
+					die ( 'method not exist.' );
 				} else {
 					if (is_callable ( array (
 							$obj_module,

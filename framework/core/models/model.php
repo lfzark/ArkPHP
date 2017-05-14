@@ -12,6 +12,7 @@ class _Model extends Ormer {
 		parent::__construct ();
 		SimpleLogger::debug ( "Model Class Initialized" );
 	}
+
 }
 
 ?>

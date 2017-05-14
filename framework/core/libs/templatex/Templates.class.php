@@ -18,19 +18,18 @@ class Templatex {
 	}
 	
 	public function loadSysVar(){
-		$this->_config [trim ( "PUBLIC_PATH")] = PUBLIC_PATH;
 		
-		$this->_config [trim ( "ACTION_URL")]  = ACTION_URL;
+		$this->_config [trim ("PUBLIC_PATH")] = PUBLIC_PATH;
+		$this->_config [trim ("ACTION_URL")]  = ACTION_URL;
 		
 		//apt-get install php7.0-xml TO-DEL
-		$_slf = simplexml_load_file ( FRAMEWORK_PATH . 'config/sys_var.xml' );
-		
-		$_tagLib = $_slf->xpath ( '/root/sys_tag' );
-		
-		foreach ( $_tagLib as $_tag ) {
-			$this->_config [trim ( $_tag->name )] = $_tag->value;
+		require_once ( FRAMEWORK_PATH . 'config/global_var.php' );
+		global $global_var;
+		if($global_var!=null){
+		foreach( $global_var as $var_key => $var_var){
+			$this->_config [trim ($var_key)]  = $var_var;
 		}
-		
+		}
 		
 	}
 	//assign()方法，用于注入变量
@@ -53,15 +52,17 @@ class Templatex {
 	 * @param string 解析文件路径
 	 * @return void
 	 */
-	public function display($_file) {
-		
+	
+	public function display($_file,$abs=false) {
+		//支持绝对路径会严重影响安全性
 		$_tplFile = TPL_DIR . $_file;
 
-		 
 		if (! file_exists ( $_tplFile )) {
-			exit ( 'ERROR :TPL Files Not Found.' );
+			exit ( 'ERROR :TPL Files Not Found.'.$_tplFile );
 		}
-
+		
+		$_file = str_replace(array('\\','/'),'',$_file);
+		
 		$_parFile = TPL_C_DIR . md5 ( $_file ) . $_file . '.php';
 
 		 
@@ -80,7 +81,7 @@ class Templatex {
 			}
 		}
 		
-		require dirname ( __FILE__ ) . '/Parser.class.php';
+		require dirname ( __FILE__ ) . DS.'Parser.class.php';
 		$_parser = new Parser ( $_tplFile ); //模板文件
 		$include_recompile_flag = False;
 		$include_list = $_parser->getParIncludeList();

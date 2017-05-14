@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>{include file = "common/header.tpl"}
+</head>
+
+<body class="hold-transition skin-green-light  layout-boxed  ">
+	<div class="wrapper">
+
+		<!-- Main Header -->
+		<header class="main-header">
+
+			<!-- Logo -->
+			<a href="<!--{ACTION_URL}-->" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini"><b>D</b>VS</span> <!-- logo for regular state and mobile devices -->
+				<span class="logo-lg"><!--{BLOG_NAME}--></span>
+			</a>
+
+			<!-- Header Navbar -->
+   {include file = "common/header_navibar.html"}
+    	<!-- END Header Navbar -->
+		</header>
+		<!-- Left side column. contains the logo and sidebar -->
+		{include file='common/sidebar.tpl'}
+		<!-- End Left side column. contains the logo and sidebar -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					扫描概况 <small>漏洞扫描结果概况</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> 面板</a></li>
+					<li class="active">扫描概况</li>
+
+				</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+			<div class="row">
+			<div class="col-md-3">
+ 
+			<div class="small-box bg-green">
+            <div class="inner">
+              <h3>5646</h3>
+
+              <p>总扫描数</p>
+            </div>
+
+           
+      </div>
+			
+			</div>
+			
+			<div class="col-md-3">
+			<div class="small-box bg-red">
+            <div class="inner">
+              <h3>50</h3>
+
+              <p>高危漏洞</p>
+            </div>
+
+           
+      </div>
+			</div>
+
+<div class="col-md-3">
+			<div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>66</h3>
+
+              <p>中危漏洞</p>
+            </div>
+		
+           
+      </div>
+</div>
+<div class="col-md-3">
+			<div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>160</h3>
+
+              <p>低危漏洞</p>
+            </div>
+		
+           
+      </div>
+</div>
+</div>
+			
+<br>
+				<div class='row'>
+					<div class="col-xs-6">
+				 <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">漏洞类型统计</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+            <div class="col-md-8">
+              <canvas width="788" height="594" id="pieChart" style="height: 710px; width: 788px;"></canvas>
+              </div>
+              <div class="col-md-4">
+                  <ul class="chart-legend clearfix">
+                    <li><i class="fa fa-circle-o text-red"></i> XSS-%20</li>
+                    <li><i class="fa fa-circle-o text-green"></i> SQL注入-%23</li>
+                    <li><i class="fa fa-circle-o text-yellow"></i> 信息泄漏-%21</li>
+                    <li><i class="fa fa-circle-o text-aqua"></i> 弱密码-%11</li>
+                    <li><i class="fa fa-circle-o text-light-blue"></i> 目录遍历-%2</li>
+                    <li><i class="fa fa-circle-o text-gray"></i> 其他-%15</li>
+                  </ul>
+                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+					</div>
+				<div class="col-xs-6">
+				<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">漏洞走势</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas width="788" height="250" id="lineChart" style="height: 250px; width: 788px;"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+					</div>
+					<!-- Button trigger modal -->
+ 
+				</div>
+				
+							<div class="row">
+			<div class="col-md-6">
+ 
+			<div class="box">
+      
+         
+            <div class="box-header">
+              <h3 class="box-title">系统运行状态</h3>
+                            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body ">
+              <table class="table table-condensed">
+                <tbody>
+                <tr>
+                  
+                  <td >CPU使用率</td>
+                  <td style='width:300px'>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-red">55%</span></td>
+                </tr>
+                
+                <tr>
+             
+                  <td>内存使用率</td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-yellow">70%</span></td>
+                </tr>
+                <tr>
+               
+                  <td>磁盘使用率</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-light-blue">30%</span></td>
+                </tr>
+                <tr>
+             
+                  <td>带宽使用率</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                    </div>
+                  </td>
+                  <td><span class="badge bg-green">90%</span></td>
+                </tr>
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+       
+
+      </div>
+			
+			</div>
+<div class="col-md-6">
+ 
+			<div class="box">
+      
+         
+            <div class="box-header">
+              <h3 class="box-title">分布式架构运行状态</h3>
+                            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body ">
+              <table class="table table-condensed">
+                <tbody>
+                <tr>
+                  
+                  <td >Agent总数</td>
+
+                  <td><span class="label bg-green">4</span></td>
+                </tr>
+                
+                <tr>
+             
+                  <td>总任务数</td>
+
+                  <td><span class="label bg-green">250</span></td>
+                </tr>
+                <tr>
+               
+                  <td>Agent在线数量</td>
+
+                  <td><span class="label bg-green">3</span></td>
+                </tr>
+                <tr>
+             
+                  <td>支持插件总数</td>
+
+                  <td><span class="label bg-green">646</span></td>
+                </tr>
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+       
+
+      </div>
+			
+			</div>
+</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<!-- To the right -->
+			<div class="pull-right hidden-xs">Anything you want</div>
+			<!-- Default to the left -->
+			<strong>Copyright &copy; 2016 <a href="#">Company</a>.
+			</strong> All rights reserved.
+		</footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Create the tabs -->
+			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+				<li class="active"><a href="#control-sidebar-home-tab"
+					data-toggle="tab"><i class="fa fa-home"></i></a></li>
+				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
+						class="fa fa-gears"></i></a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Home tab content -->
+				<div class="tab-pane active" id="control-sidebar-home-tab">
+					<h3 class="control-sidebar-heading">Recent Activity</h3>
+					<ul class="control-sidebar-menu">
+						<li><a href="javascript::;"> <i
+								class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+								<div class="menu-info">
+									<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+									<p>Will be 23 on April 24th</p>
+								</div>
+						</a></li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
+
+					<h3 class="control-sidebar-heading">Tasks Progress</h3>
+					<ul class="control-sidebar-menu">
+						<li><a href="javascript::;">
+								<h4 class="control-sidebar-subheading">
+									Custom Template Design <span class="pull-right-container">
+										<span class="label label-danger pull-right">70%</span>
+									</span>
+								</h4>
+
+								<div class="progress progress-xxs">
+									<div class="progress-bar progress-bar-danger"
+										style="width: 70%"></div>
+								</div>
+						</a></li>
+					</ul>
+					<!-- /.control-sidebar-menu -->
+
+				</div>
+				<!-- /.tab-pane -->
+				<!-- Stats tab content -->
+				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab
+					Content</div>
+				<!-- /.tab-pane -->
+				<!-- Settings tab content -->
+				<div class="tab-pane" id="control-sidebar-settings-tab">
+					<form method="post">
+						<h3 class="control-sidebar-heading">General Settings</h3>
+
+						<div class="form-group">
+							<label class="control-sidebar-subheading"> Report panel
+								usage <input type="checkbox" class="pull-right" checked>
+							</label>
+
+							<p>Some information about this general settings option</p>
+						</div>
+						<!-- /.form-group -->
+					</form>
+				</div>
+				<!-- /.tab-pane -->
+			</div>
+		</aside>
+		<!-- /.control-sidebar -->
+		<!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED JS SCRIPTS -->
+
+	{include file = "common/footer.tpl"}
+	<script src="<!--{PUBLIC_PATH}-->/action_js/dashboard.js"></script>
+</body>
+</html>

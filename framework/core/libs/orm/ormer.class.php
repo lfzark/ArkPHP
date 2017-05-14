@@ -176,7 +176,6 @@ class Ormer {
             "DISTINCT $table.$resultColumns":
             "$table.$resultColumns";
 
-
 		if(count($this->_join)){
 			foreach($this->_joinTables as $joinTable){
 				$joinTables .= ", $joinTable->tableName.*";
@@ -532,7 +531,7 @@ class Ormer {
 	 * @param   array/string $condition     condition of the join
 	 * @return  OrmWrapper
 	 */
-	public function join($type, OrmWrapper $table, $conditions = null){
+	public function join($type, $table, $conditions = null){
 		$type = trim(strtoupper($type)." JOIN");
 
 		if(null === $conditions){
@@ -564,7 +563,6 @@ class Ormer {
 
 			return join(" ", $returnedConditions);
 		}
-
 		return $conditions;
 	}
 
@@ -721,6 +719,7 @@ class Ormer {
 		return $this->hydrate($row[0]);
 	}
 	public function findOneRaw($id = null){
+		
 		if(!is_null($id)){
 			$this->where($this->_idSelector, "=", $id);
 		}
@@ -799,7 +798,7 @@ class Ormer {
 	 * Count the number of lines from the asked model
 	 * @return Int|Boolean
 	 */
-	public function rowCount(){
+	public function rowCount($selector=null){
 		$result = $this->joinIfNotEmpty(array(
 		$this->buildJoin(),
 		$this->buildWhere(),
@@ -809,12 +808,19 @@ class Ormer {
 		$this->buildOffset(),
 		));
 
-
 		if(!$this->connector){
 			return false;
 		}
+		$id_selector = $this->_idSelector;
+		
+		if($selector!=null){
+			$id_selector = $selector;
+		}else{
+			$id_selector = $this->_idSelector;
+		}
+ 
+		$query = "SELECT ".OrmConnector::$quoteSeparator.$id_selector.OrmConnector::$quoteSeparator." FROM ".$this->tableName." ".$result;
 
-		$query = "SELECT ".OrmConnector::$quoteSeparator.$this->_idSelector.OrmConnector::$quoteSeparator." FROM ".$this->tableName." ".$result;
 		self::$log[] = $query;
 
 		try{
@@ -824,7 +830,7 @@ class Ormer {
 			self::logError($e, $query);
 			return false;
 		}
-
+		$this->reset();
 		return $preparedQuery->rowCount();
 	}
 
@@ -884,6 +890,7 @@ class Ormer {
 			$query = $this->buildUpdate();
 
 			$values[] = $this->getId();
+
 		}
 
 		self::$log[] = $query;
@@ -1036,6 +1043,7 @@ class Ormer {
 	 * @param null $query
 	 */
 	public static function logError($error, $query = null){
+echo $query ;
 		if(class_exists('Log')){
 			if(null != $query){
 				SimpleLogger::warn($query);
@@ -1079,4 +1087,6 @@ class Ormer {
 		
 		return $this->connector->query ( $sql )->fetch ();
 	}
+
+
 }

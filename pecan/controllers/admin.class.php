@@ -11,7 +11,7 @@ class Admin extends Controller {
 	 */
 
 	function run() {
-		$this->assign('username','ark1ee');
+		$this->assign (  'username', $this->session('_nickname') );
 		$this->display ( 'starter.html' );
 
 	}

@@ -1,0 +1,51 @@
+<!-- 添加权限 -->
+
+<div class='modal_j' id='add_permission'>
+	<form>
+
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="权限名称" type="email" id='add_permission_name'>
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="权限路径" type="email" id='add_permission_path'>
+		</div>
+		<hr>
+
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='add_permission_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success"  onclick='add_do()'>添加</button>
+</div>
+
+
+<div class='modal_j' id='modify_permission'>
+	<form>
+		<div class="input-group">
+		  <input type="hidden" id='permission_id'> 
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="权限名称"  id='modify_permission_name'>
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="权限路径"  id='modify_permission_path'>
+		</div>
+		<hr>
+		<hr>
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='modify_permission_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success" onclick="modify_do()">修改</button>
+</div>
+
+
+

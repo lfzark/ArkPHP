@@ -13,7 +13,7 @@ class Parser {
 	private $_tpl;
 
 	//构造方法，用于获取模板文件里的内容
-	public function __construct($_tplFile) {
+	public function __construct($_tplFile) { 
 		if (! $this->_tpl = file_get_contents ( $_tplFile )) {
 			exit ( 'ERROR：模板文件读取错误！222' );
 		}
@@ -83,17 +83,22 @@ class Parser {
 		$_pattenIf = '/\{if\s+\$([\w]+)\}/';
 		$_pattenIfMemberVar = '/\{if\s+@([\w]+\[\'[\w]+\'])\s?\}/';
 		$_pattenIfConditionVarGlobal = '/\{if\s+\$([\w]+)\s+(\==|!=|>|<|<=|>=)\s+([\S]+)\}/';
+		$_pattenIfConditionTwoVar = '/\{if\s+\$([\w]+)\s+(\==|!=|>|<|<=|>=)\s+\$([\w]+)\}/';
 		$_pattenIfCondition = '/\{if\s+@([\w]+\[\'[\w]+\'])\s+(\==|!=|>|<|<=|>=)\s+([\S]+)\}/';
+		$_pattenIfConditionForTwoVar = '/\{if\s+\@([\w]+)\s+(\==|!=|>|<|<=|>=)\s+\$([\w]+)\}/';
 		$_pattenIfConditionVar = '/\{if\s+@([\w]+)\s+(\==|!=|>|<|<=|>=)\s+([\S]+)\}/';
 		$_pattenEndIf = '/\{\/if\}/';
 		$_pattenElse = '/\{else\}/';
 		
-		if (preg_match ( $_pattenIfConditionVarGlobal, $this->_tpl )||preg_match ( $_pattenIfConditionVar, $this->_tpl )||preg_match ( $_pattenIfCondition, $this->_tpl )||preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
-			
-			if (preg_match ( $_pattenEndIf, $this->_tpl )) {
+		if (preg_match ( $_pattenIfConditionForTwoVar, $this->_tpl )||preg_match ( $_pattenIfConditionTwoVar, $this->_tpl )||preg_match ( $_pattenIfConditionVarGlobal, $this->_tpl )||preg_match ( $_pattenIfConditionVar, $this->_tpl )||preg_match ( $_pattenIfCondition, $this->_tpl )||preg_match ( $_pattenIf, $this->_tpl )||preg_match ( $_pattenIfMemberVar, $this->_tpl )) {
 
+			if (preg_match ( $_pattenEndIf, $this->_tpl )) {
+				
+				$this->_tpl = preg_replace ( $_pattenIfConditionForTwoVar, "<?php if ($$1 $2 \$this->_vars['$3']) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIfCondition, "<?php if ($$1 $2 $3) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIfConditionVar, "<?php if ($$1 $2 $3) {?>", $this->_tpl );
+				$this->_tpl = preg_replace ( $_pattenIfConditionTwoVar, "<?php if (\$this->_vars['$1'] $2 \$this->_vars['$3']) {?>", $this->_tpl );
+
 				$this->_tpl = preg_replace ( $_pattenIfConditionVarGlobal, "<?php if (\$this->_vars['$1'] $2 $3) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIf, "<?php if (\$this->_vars['$1']) {?>", $this->_tpl );
 				$this->_tpl = preg_replace ( $_pattenIfMemberVar, "<?php if ($$1) {?>", $this->_tpl );
@@ -163,10 +168,9 @@ class Parser {
 	private function parInclude() {
 		$_patten = '/\{include\s+file\s?=\s?[\"\']([\w\.\-]+[\\/]?[\w\.\-]+)[\"\']\s?}/';
 		while ( preg_match ( $_patten, $this->_tpl, $_file ) ) {
-			
 
 			if (! file_exists ( TPL_DIR . DS . $_file [1] ) || empty ( $_file )) {
-				exit ( 'ERROR：Include Tag Parse Wrong！' );
+				exit ( 'ERROR：Include Tag Parse Wrong！ Can\'t find tpl file:'.$_file[1] );
 			}
 			
 			//app/templates/$1

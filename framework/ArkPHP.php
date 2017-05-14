@@ -1,21 +1,21 @@
 <?php
 
+define ( 'IS_WIN', strstr ( PHP_OS, 'WIN' ) ? 1 : 0 );
 
-define ( 'DS', '/' );
+define ( 'DS', DIRECTORY_SEPARATOR );
 
-define ( 'DBNAME', 'arkblog' );
+define ( 'URL_DS', '/' );	
 
-define ( 'SITE_NAME', 'arkphp' );
+define ( 'SITE_NAME', 'blog' );
 
 if ( SITE_NAME != ''){
-	define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:"").DS.SITE_NAME);
+	define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:"").URL_DS.SITE_NAME);
 }
 else {
 	define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'].($_SERVER["SERVER_PORT"]!=80?':'.$_SERVER["SERVER_PORT"]:""));
 }
 
 
-define ( 'IS_WIN', strstr ( PHP_OS, 'WIN' ) ? 1 : 0 );
 
 global $application_name;
 
@@ -45,6 +45,7 @@ if(!defined("INDEX_PAGE")){
 }
 
 
+
 // Path to the framework folder
 $framework_path = str_replace ( '\\', DS, BASE_PATH ) . DS . 'framework/';
 
@@ -67,7 +68,8 @@ if (is_dir ( $application_path )) {
 }
 
 define ( 'PUBLIC_PATH', SITE_URL. DS .$application_name . DS . 'public' );
-define ( 'ACTION_URL', SITE_URL. DS . INDEX_PAGE );
+
+define ( 'ACTION_URL', SITE_URL. URL_DS. INDEX_PAGE );
 
 define ( 'SELF', pathinfo ( __FILE__, PATHINFO_BASENAME ) );
 //////////////////////
@@ -95,10 +97,14 @@ define("ACTION_PATH","http://".$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]);
 
 define ( 'MODULE_DIR', APP_PATH . 'controllers/' );
 
-//每页行数
-define ( 'ROWS' , 8);
+set_include_path(MODULE_DIR);
+spl_autoload_extensions(EXT);
+spl_autoload_register();
+
 
 //载入Ark框架的主文件
 
 require_once FRAMEWORK_PATH . 'core/ArkCore.php';
 ?>
+
+

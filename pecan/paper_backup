@@ -1,0 +1,77 @@
+
+0x01插件结构
+
+(function($){
+/*这里放插件代码，可以将$作为jQuery的别名*/
+})(jQuery);
+
+0x02自定义方法
+
+比如要自定义一个方法名为modal_j.
+
+(function($) {
+
+    $.fn.modal_j = function(options) {
+
+        var defaults = {
+            css_class : '.modal',
+            color : 'yellow',
+            modal_js_header : ''
+        };
+
+        var opts = $.extend(defaults, options);
+        alert(defaults['css_class']);
+
+    };
+
+})(jQuery);
+
+0x03一个模态窗口插件实例
+
+实现了Bootstrap模态窗口的封装。
+
+(function($) {
+
+    $.fn.modal_j = function(options) {
+
+        var defaults = {
+            modalClass : '.modal',
+            modal_content : 'Hello I\'m Mr.Modal J',
+            modal_title : 'model_j',
+            modal_size : '',
+            modal_footer : ''
+        };
+
+        var settings = $.extend({}, defaults, options);
+
+        this.addClass('modal fade');
+        this.attr('tabindex', '-1');
+        this.attr('role', 'dialog');
+
+        var content = '  <div class="modal-dialog" role="document"> '
+                + '<div class="modal-content"> '
+                + '<div class="modal-header">'
+                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> '
+                + '<h4 class="modal-title" >Modal title</h4> ' + '</div>'
+                + '<div class="modal-body">' + settings['modal_content']
+                + '</div>' + '<div class="modal-footer">'
+                + settings['modal_footer'] + '</div>' + '</div>' + '</div>';
+
+        this.html(content);
+        $(this).find('.modal-dialog').addClass(settings['modal_size']);
+        $(this).find('.modal-title').html(settings['modal_title']);
+
+    };
+
+})(jQuery);
+
+$('.modal_j').addClass('modal fade');
+
+0x04不错的学习资料
+
+    http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.htm
+
+    Jquery API
+    
+          官方教程
+

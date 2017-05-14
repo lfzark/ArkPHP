@@ -1,0 +1,71 @@
+<!-- 添加分类 -->
+
+<div class='modal_j' id='add_category'>
+	<form>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="分类名称" type="text" id='category_name'>
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="父分类" type="text" id="parent_id">
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa  fa-user"></i></span> <select
+				class="selectpicker form-control" data-style='btn-black'
+				id='category_status'>
+
+				<option value="1">可见</option>
+				<option value="0">不可见</option>
+				<option value="-1">禁用</option>
+
+			</select>
+		</div>
+		<hr>
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='add_category_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success" data-dismiss="modal" id='add_category_button'>添加</button>
+</div>
+
+
+<!-- 修改分类 -->
+
+<div class='modal_j' id='modify_category'>
+	<form>
+	  <input type="hidden" id='modify_category_id'>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="分类名称" type="text" id='modify_category_name'>
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="父分类" type="text" id="modify_parent_id">
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa  fa-user"></i></span> <select
+				class="selectpicker form-control" data-style='btn-black'
+				id='modify_category_status'>
+
+				<option value="1">可见</option>
+				<option value="0">不可见</option>
+				<option value="-1">禁用</option>
+
+			</select>
+		</div>
+		<hr>
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='modify_category_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success " data-dismiss="modal" id='modify_category_button'>修改</button>
+</div>

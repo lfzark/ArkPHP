@@ -11,6 +11,7 @@
  * @author: Ark <lfzlfz@126.com>
  * @version: 0.1.0
  */
+
 class PluginManager {
 	private $_registered_plugin = array ();
 	/**
@@ -19,11 +20,11 @@ class PluginManager {
 	 * @access public
 	 * @return void
 	 */
+
 	public function __construct() {
 		$plugins = $this->get_plugin_list ();
 		if ($plugins) {
 			foreach ( $plugins as $plugin ) 
-
 			{
 				if (@file_exists ( SYS_PLUGIN . $plugin ['directory'] . '/index.php' )) {
 					include_once (SYS_PLUGIN . $plugin ['directory'] . '/index.php');
@@ -36,28 +37,58 @@ class PluginManager {
 			}
 		}
 	}
+	
 	public function get_plugin_list() {
+		
 		$plugins = array (
 				array (
 						"directory" => "encrypt",
-						"name" => "encrypt" 
+						"name" => "encrypt"
 				),
 				array (
 						"directory" => "time",
-						"name" => "time" 
+						"name" => "time"
 				),
 				array (
 						"directory" => "php_check",
-						"name" => "php_check" 
+						"name" => "php_check"
 				),
 				array (
 						"directory" => "db_op",
-						"name" => "db_op" 
-				) 
-		)
-		;
+						"name" => "db_op"
+				) ,
+				array (
+						"directory" => "rbac",
+						"name" => "rbac"
+				),
+				array (
+						"directory" => "error_page",
+						"name" => "error_page"
+				)
+				,
+				array (
+						"directory" => "dbank",
+						"name" => "dbank"
+				),
+				array (
+						"directory" => "translate",
+						"name" => "translate"
+				),
+				array (
+						"directory" => "captcha",
+						"name" => "captcha"
+				),
+				array (
+						"directory" => "email",
+						"name" => "email"
+				)
+				
+		);
+	
 		return $plugins;
 	}
+	
+	
 	public function register($hook, &$reference, $method) {
 		$key = get_class ( $reference ) . '->' . $method;
 		$this->_registered_plugin [$hook] [$key] = array (
@@ -65,6 +96,7 @@ class PluginManager {
 				$method 
 		);
 	}
+	
 	public function run($hook, $param = NULL) {
 		$result = '';
 		

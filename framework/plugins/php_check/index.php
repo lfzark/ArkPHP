@@ -24,7 +24,7 @@ class php_check_plugin extends Plugin {
 	 * 检测PHP版本号
 	 */
 	function check_php_version() {
-		return substr ( PHP_VERSION, 0, 3);
+		return substr ( PHP_VERSION, 0, 3 );
 		if (substr ( PHP_VERSION, 0, 3 ) < '7.0') {
 			return False;
 			// exit('尊敬的用户您好，由于您的php版本过低，不能安装本软件，为了系统功能全面可用，请升级到5.0或更高版本再安装，谢谢！<br />您可以登录 arkphp.com');
@@ -117,11 +117,35 @@ class php_check_plugin extends Plugin {
 		}
 		return false;
 	}
-	
-	function check_upload_max(){
-		return substr(@ini_get('upload_max_filesize'), 0, -1);
+	function check_upload_max() {
+		return substr ( @ini_get ( 'upload_max_filesize' ), 0, - 1 );
 	}
 	function check_phpinfo() {
 		phpinfo ();
 	}
+	
+	/*
+	 * 获取IP
+	 */
+	function get_ip() {
+		$ip = '未知IP';
+		if (! empty ( $_SERVER ['HTTP_CLIENT_IP'] )) {
+			return $this->is_ip ( $_SERVER ['HTTP_CLIENT_IP'] ) ? $_SERVER ['HTTP_CLIENT_IP'] : $ip;
+		} elseif (! empty ( $_SERVER ['HTTP_X_FORWARDED_FOR'] )) {
+			return $this->is_ip ( $_SERVER ['HTTP_X_FORWARDED_FOR'] ) ? $_SERVER ['HTTP_X_FORWARDED_FOR'] : $ip;
+		} else {
+			return $this->is_ip ( $_SERVER ['REMOTE_ADDR'] ) ? $_SERVER ['REMOTE_ADDR'] : $ip;
+		}
+	}
+	
+	function is_ip($str) {
+		$ip = explode ( '.', $str );
+		for($i = 0; $i < count ( $ip ); $i ++) {
+			if ($ip [$i] > 255) {
+				return false;
+			}
+		}
+		return preg_match ( '/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/', $str );
+	}
+	
 }

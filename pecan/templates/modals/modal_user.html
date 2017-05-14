@@ -1,0 +1,74 @@
+<!-- 添加用户 -->
+
+<div class='modal_j' id='add_user'>
+	<form>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="用户名(邮箱/电话)" id="add_user_username" >
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
+			<input class="form-control" id="add_user_nickname"
+				placeholder="昵称">
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
+			<input class="form-control" id="add_user_password"
+				placeholder="密码">
+		</div>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa  fa-user"></i></span> <select
+				class="selectpicker form-control" data-style='btn-black'
+				id='add_user_role'>
+				
+{foreach $rolelist(key,value)} 
+
+				<option value="{@value['id_ark_role']}">{@value['role_name']}</option>
+ 
+{/foreach}
+			</select>
+		</div>
+		<hr>
+	
+	</form>
+</div>
+
+<div class='modal_j' id='add_user_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success" data-dismiss="modal" onclick='add_user()'>添加</button>
+</div>
+
+
+<!-- 修改用户 -->
+
+<div class='modal_j' id='modify_user'>
+	<form>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+			<input class="form-control" placeholder="admin@admin.com" type="email">
+		</div>
+		<hr>
+		<hr>
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa  fa-user"></i></span> <select
+				class="selectpicker form-control" data-style='btn-black'
+				id='arkblog_category'>
+
+				<option value="0">管理员</option>
+				<option value="1">普通用户</option>
+				<option value="2">试用</option>
+
+			</select>
+		</div>
+		<hr>
+		<div class="input-group"></div>
+	</form>
+</div>
+
+<div class='modal_j' id='modify_user_footer'>
+	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	<button type="button" class="btn btn-success " data-dismiss="modal">修改</button>
+</div>
